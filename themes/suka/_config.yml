@@ -100,7 +100,7 @@ nav:
     use: true
   search:
     use: true
-    link: /search
+    link: /search.html
   pages:
     租用GPU:
       link: https://mistgpu.cn
