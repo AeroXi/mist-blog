@@ -3,7 +3,7 @@ title: AI主播，在线解说：腾讯AI lab提出多模态语音合成模型Du
 date: 2020-02-10 19:45:55
 tags:
 ---
-# 论文笔记：腾讯AI lab多模态语音合成模型DurIAN
+## 论文笔记：腾讯AI lab多模态语音合成模型DurIAN
 论文：[DurIAN: Duration Informed Attention Network For Multimodal Synthesis](https://arxiv.org/abs/1909.01700)，[演示地址](https://tencent-ailab.github.io/durian/)。
 
 ## 概述
