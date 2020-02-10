@@ -12,7 +12,8 @@ jobs:
 
     steps:
     # 切代码到 runner
-    
+    - run: |
+        node -v
     - run: |
         free -h
     - run: ls -lah
@@ -24,6 +25,13 @@ jobs:
     - uses: srt32/git-actions@v0.0.3
       with:
         args: git submodule update --init --recursive
+    # 使用 node:10
+    - name: use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - run: |
+        node -v
 
     # 设置阿里云OSS的 id/secret，存储到 github 的 secrets 中
     - name: setup aliyun oss
@@ -32,7 +40,6 @@ jobs:
         endpoint: oss-cn-zhangjiakou.aliyuncs.com
         access-key-id: ${{ secrets.OSS_KEY_ID }}
         access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
-    
+
     - name: 复制文件到阿里云OSS
       run: ossutil cp -rf public oss://mist-blog/
-
