@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>PyCharm连接教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="blog.mistgpu.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="PyCharm连接教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="Pycharm连接服务器首先，社区版的pycharm尚不具备远程连接服务器的功能，需要使用专业版。 首先配置 Pycharm 服务器的代码同步，打开最上方工具栏处的 Tools -&amp;gt; Deployment -&amp;gt;Configuration，在弹出的窗口处点击左边的 + 添加一个部署配置，输入配置名 Name，Type 选择SFTP，然后确认。   配置远程服务器的 IP，端口，用户名和密 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/1.png"><meta property="og:image" content="/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/2.png"><meta property="article:published_time" content="2020-04-08T09:45:55.000Z"><meta property="article:modified_time" content="2020-04-08T08:57:19.995Z"><meta property="og:updated_time" content="2020-04-08T08:57:19.995Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 4.2.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "blog.mistgpu.cn/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "PyCharm连接教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "blog.mistgpu.cn/img/large.png"
+    },
+    
+    "datePublished": "2020-04-08T09:45:55.000Z",
+    "dateModified": "2020-04-08T08:57:19.995Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.cn/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.cn/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "blog.mistgpu.cn/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "Pycharm连接服务器首先，社区版的pycharm尚不具备远程连接服务器的功能，需要使用专业版。 首先配置 Pycharm 服务器的代码同步，打开最上方工具栏处的 Tools -&amp;amp;gt; Deployment -&amp;amp;gt;Configuration，在弹出的窗口处点击左边的 + 添加一个部署配置，输入配置名 Name，Type 选择SFTP，然后确认。   配置远程服务器的 IP，端口，用户名和密 - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a href="https://mistgpu.cn" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=blog.mistgpu.cn&pic=blog.mistgpu.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=PyCharm连接教程&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.cn/img/large.png&url=blog.mistgpu.cn" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=blog.mistgpu.cn&text=PyCharm连接教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACPUlEQVR42u2a207DQAxE+/8/DU9IULJzSYlo1icvKUnYPZVqZzz24+MGxwNIIIEE8g0gH+L4uv/9/GORp+dWn1dntS+QsyEPf7SLRdX/HN1b/e32BRJIFTC/ftAG8iiIVmus9gUSSPnw0war++qFkCR1IIFMAycREw5KvSyABLIRGG3ydmtcooKA3A6yKcT+8nxZtQjkrSErA2kRICpJr65d5qoBeXvIVrw6wyoBSgoyIOdCKpGQFPmpsaqMhqVAARJIEyxq88SAVYEmRS+Q4yCdIHALqkbUKhiT60DOhEzhlKmqjFdXkFVNeSBHQCrYNlknSd8FTB3dQG4LmSR2JRYakz9tagE5EzJJyk5QtMNOqsADEsjEtEqeTUyvpCADEkjX7HQN9mZYqRmQAnIuZGoEONFbm/aB+QXkTMimoEqHR5SYrQZGgRwJWSXXUIioxqdrlJ4yUYHcDvIVYyoRJ43REA2KALk1pBKzbuPGgHLN+MocAHJrSNdYcsVVW6A54QwkkCpg2uHhM4lcFnJAjoQ8K25XmzXC2BkRQM6GVII3DSYrYoMhZvvGAXIEZJKAmwHQtGhTQQckkGmh714AKuBcIzTuPgC5NaQdtAyHNNNirfnyQM6ETAc5GqBkGOpU9wHIMZCNSZAObSbFfxU4QI6DTF74iemfDDSlQylAAvlKUCTDcxHY2cABcgxkurFbI2lIAQlkIjDc9WZYzjXsT6sgILeDTIykxAh1jYB0oATI2ZDvfAAJJJBA/uPxCb2Gt4aOMXx8AAAAAElFTkSuQmCC" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">PyCharm连接教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2020-04-08</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=PyCharm连接教程&url=blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&pic=blog.mistgpu.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.cn/img/large.png&url=blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=blog.mistgpu.cn/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACPUlEQVR42u2a207DQAxE+/8/DU9IULJzSYlo1icvKUnYPZVqZzz24+MGxwNIIIEE8g0gH+L4uv/9/GORp+dWn1dntS+QsyEPf7SLRdX/HN1b/e32BRJIFTC/ftAG8iiIVmus9gUSSPnw0war++qFkCR1IIFMAycREw5KvSyABLIRGG3ydmtcooKA3A6yKcT+8nxZtQjkrSErA2kRICpJr65d5qoBeXvIVrw6wyoBSgoyIOdCKpGQFPmpsaqMhqVAARJIEyxq88SAVYEmRS+Q4yCdIHALqkbUKhiT60DOhEzhlKmqjFdXkFVNeSBHQCrYNlknSd8FTB3dQG4LmSR2JRYakz9tagE5EzJJyk5QtMNOqsADEsjEtEqeTUyvpCADEkjX7HQN9mZYqRmQAnIuZGoEONFbm/aB+QXkTMimoEqHR5SYrQZGgRwJWSXXUIioxqdrlJ4yUYHcDvIVYyoRJ43REA2KALk1pBKzbuPGgHLN+MocAHJrSNdYcsVVW6A54QwkkCpg2uHhM4lcFnJAjoQ8K25XmzXC2BkRQM6GVII3DSYrYoMhZvvGAXIEZJKAmwHQtGhTQQckkGmh714AKuBcIzTuPgC5NaQdtAyHNNNirfnyQM6ETAc5GqBkGOpU9wHIMZCNSZAObSbFfxU4QI6DTF74iemfDDSlQylAAvlKUCTDcxHY2cABcgxkurFbI2lIAQlkIjDc9WZYzjXsT6sgILeDTIykxAh1jYB0oATI2ZDvfAAJJJBA/uPxCb2Gt4aOMXx8AAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Pycharm连接服务器"><span class="post-toc-number">1.</span> <span class="post-toc-text">Pycharm连接服务器</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h1 id="Pycharm连接服务器"><a href="#Pycharm连接服务器" class="headerlink" title="Pycharm连接服务器"></a>Pycharm连接服务器</h1><p>首先，社区版的pycharm尚不具备远程连接服务器的功能，需要使用专业版。</p>
+<p>首先配置 Pycharm 服务器的代码同步，打开最上方工具栏处的 Tools -&gt; Deployment -&gt;<br>Configuration，在弹出的窗口处点击左边的 + 添加一个部署配置，输入配置名 Name，Type 选择<br>SFTP，然后确认。</p>
+<img src="/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/1.png" class="">
+
+<p>配置远程服务器的 IP，端口，用户名和密码，Root Path<br>是项目文件在远程服务器中的根目录</p>
+<p>以下面的一条ssh命令为例：</p>
+<p>ssh mist@47.103.52.232 -p 48744 </p>
+<p>ip为47.103.52.232，端口为48744，用户名为mist，密码在创建服务器时确定。</p>
+<p>Root path则需设置成/home/mist/下您自己项目的文件夹。</p>
+<img src="/2020/04/08/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/2.png" class="">
+
+<p>点击 Mappings，将 Local Path 设置为 Windows 下的工程目录，例如<br>D:\Projects\ML-Project，自己视情况设定。将 Deployment path on server<br>设置为远程服务器中的项目目录</p>
+<p>点击 Excluded Paths 可以设置一些不想同步的目录，例如软件的配置文件目录等。</p>
+<p>另外打开 Tools -&gt; Deployment -&gt; Options，将 Create Empty directories<br>打上勾，要是指定的文件夹不存在，会自动创建。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-04-08");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-04-08T09:45:55.000Z" itemprop="datePublished">2020-04-08</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/04/08/VSCode%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">VSCode连接教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="blog.mistgpu.cn">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU出租 2080Ti 免配环境 &nbsp;<a href="https://mistgpu.cn" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>
