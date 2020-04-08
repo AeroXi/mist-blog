@@ -7,7 +7,9 @@ tags:
 Pycharm连接服务器
 =================
 
-首先，社区版的pycharm尚不具备远程连接服务器的功能，需要使用专业版。
+*社区版的pycharm不支持远程连接服务器的功能，需要使用专业版。*
+
+[官网学生认证免费获得专业版](https://www.jetbrains.com/zh-cn/community/education/#students)
 
 首先配置 Pycharm 服务器的代码同步，打开最上方工具栏处的 Tools -\> Deployment -\>
 Configuration，在弹出的窗口处点击左边的 + 添加一个部署配置，输入配置名 Name，Type 选择
@@ -20,9 +22,9 @@ SFTP，然后确认。
 
 以下面的一条ssh命令为例：
 
-ssh mist\@47.103.52.232 -p 48744 
+ssh mist\@47.103.52.232 -p 48744
 
-ip为47.103.52.232，端口为48744，用户名为mist，密码在创建服务器时确定。
+用户名为mist，ip(host)为47.103.52.232，端口为48744，密码是创建服务器时填写的。
 
 Root path则需设置成/home/mist/下您自己项目的文件夹。
 

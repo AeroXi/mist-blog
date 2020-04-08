@@ -4,7 +4,9 @@ date: 2020-04-08 17:45:55
 tags:
 ---
 
-VSCODE连接云服务器教程
+### VSCode连接服务器教程
+
+[官方教程](https://code.visualstudio.com/docs/remote/ssh)
 
 首先，在vscode商店内安装Remote-SSH与Remote-SSH:EDITING 插件
 {% asset_img 5fbd279d2b88fd29ffd414af6c3aa6f6.png %}
@@ -18,7 +20,7 @@ VSCODE连接云服务器教程
 {% asset_img 734d301fee875704909d72f6510ba03a.png %}
 
 
-选择您windows系统用户下的config文件夹，图中为第一个（此处电脑用户名为benak）
+选择ssh配置文件，一般回车选择默认即可
 
 {% asset_img dbf153714151fae168aca6b3c5b76273.png %}
 
@@ -29,14 +31,15 @@ VSCODE连接云服务器教程
 
 {% asset_img 8f09ae13a8d1dc6daa400530b26f0976.png %}
 
-
 点击右侧的+窗口按钮，即可在新窗口中连接至服务器。
 
-不过每次进入新的文件夹均需要重新输入密码，有些许麻烦。以下的内容为启用公钥连接，这样连接时就不需要输入密码。
+### 高级设置：公钥连接
 
-以管理员权限打开cmd，输入ssh-keygen -t rsa 
+以下的内容为启用公钥连接，这样连接时就不需要输入密码。
 
-然后应该会在.ssh文件下见到生成的公钥密钥
+打开命令行（Win下以管理员权限打开cmd），输入ssh-keygen -t rsa 
+
+然后会在.ssh文件下见到生成的公钥密钥
 
 {% asset_img bd11f6fd7207322e15f419b0cfa13846.png %}
 
