@@ -9,18 +9,18 @@ tags:
 下面将介绍几种SSH连接方式:
 
 ## 命令行
-###启动命令行
+### 启动命令行
 {% asset_img cmd1.PNG %}
 按住如图所示的徽标键，同时按下键盘上的R，在弹出的运行命令框中输入cmd，按下回车后便能启动命令行。
 
-###运行SSH
+### 运行SSH
 {% asset_img cmd2.PNG %}
 点开[服务器管理](https://mistgpu.com/user/)，复制如上图所示的命令，并粘贴在刚才打开的命令行窗口，然后回车。（P.S. 如果没有SSH服务，请参照[这里](https://jingyan.baidu.com/article/9158e0002c159ea254122821.html)进行配置）
 
 {% asset_img cmd3.PNG %}
 第一次连接将会出现如上图所示提示，输入yes，然后回车，接下来输入您在**创建服务器时输入的密码**便可实现SSH连接上服务器。
 
-##WSL
+## WSL
 WSL，全称是Windows Subsystem for Linux，即适用于Linux的Windows子系统，相比于命令行的好处就是可以使用Linux的相关命令，字体渲染也比较美观，请参照[这里](https://jingyan.baidu.com/article/e4d08ffd5849e20fd2f60d93.html)进行WSL的安装。
 安装成功后可以通过快捷方式打开或者启动命令行输入wsl打开，打开以后的ssh连接操作同命令行运行SSH的方法，复制粘贴[服务器管理](https://mistgpu.com/user/)中的命令，回车运行，输入密码进行连接。
 
