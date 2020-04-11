@@ -28,7 +28,7 @@ tags:
 ## Jupyter
 点开[服务器管理](https://mistgpu.com/user/)，在附加功能处看到我们提供的附加功能jupyter。Jupyter对于炼丹人来讲也是相当实用的，上传和下载文件功能俱全（上传文件速度会比使用云存储稍慢，上传小文件可以考虑用jupyter方便，大文件建议使用云存储），欢迎大家多多使用和探索jupyter。
 
-{% asset_img jp0.PNG 上传和下载文件 %}
+{% asset_img jp0.PNG %}
 
 ### 上传文件
 上图红色框展示了上传文件的按钮，点击即可选择相应文件加入上传列表，然后在出现的上传列表点击您想上传的文件即可开始上传（注意jupyter也是不支持文件夹上传的噢）。
@@ -51,18 +51,18 @@ scp下载文件夹：`scp -r -P 40000 mist@gpu28.mistgpu.xyz:服务器文件路�
 
 ## MobaXterm
 在该[下载链接](https://mobaxterm.mobatek.net/download.html)获取该软件后安装打开。
-{% asset_img mf0.PNG 新建 %}
+{% asset_img mf0.PNG %}
 第一步是点击“Session”来新建会话，在弹出来的设定窗口中选择上方的SFTP，在Basic Sftp settings进行服务器信息配置。以ssh mist@gpu28.mistgpu.xyz -p 40000为例，Remote host应填入gpu28.mistgpu.xyz，即服务器主机地址（一般在@后）；在Username中填入mist，即用户名（一般在@前）；最后将Port中的数字改成40000，即端口号（一般为-p后的数字），填充完如上图所示，然后点击下方的OK完成设定。完成后软件会试图连接，需要输入密码，输入在创建服务器时的密码后按下回车便能成功连接。成功连接后，可以查看到服务器的文件，随意拖拽本地文件到该软件中服务器一方可实现上传，将服务器中的文件拖拽出来可实现下载。
 
-{% asset_img mf1.PNG 另一种方式 %}
+{% asset_img mf1.PNG %}
 另一种方法就是参照上一个SSH使用教程，采用SSH方式进行连接，成功之后左侧会出现服务器文件列表（如上图所示），同样可以使用拖拽的方式上传和下载文件。
 
 ## Xftp
 在该[下载链接](https://www.netsarang.com/zh/free-for-home-school/)获取该软件的家庭和学校用户免费版本（建议在获取下载链接的时候选中“两者”，即下载Xshell和Xftp，前者是操作服务器的命令行窗口，后者是专门用于文件传输的），后安装打开。
-{% asset_img xf0.PNG 新建 %}
+{% asset_img xf0.PNG %}
 第一步一样是新建会话，在弹出来的设定窗口中，名称可任意填写，协议选择SFTP。以ssh mist@gpu28.mistgpu.xyz -p 40000为例，主机应填入gpu28.mistgpu.xyz，端口号中的数字改为40000。下方可以填写用户名和密码，用户名即mist，密码就是创建服务器时输入的密码。填充完如上图所示，然后点击下方的“连接”完成设定并主动尝试连接。成功连接后，可以查看到服务器的文件，随意拖拽本地文件到该软件中服务器一方可实现上传，将服务器中的文件拖拽出来可实现下载。
 
 ## WinSCP
 在该[下载链接](https://winscp.net/eng/download.php)获取该软件后安装打开。
-{% asset_img xs0.PNG 新建 %}
+{% asset_img xs0.PNG %}
 第一步一样是新建会话，以ssh mist@gpu28.mistgpu.xyz -p 40000为例，在弹出来的设定窗口中，主机名应填入gpu28.mistgpu.xyz，端口号中的数字改为40000，用户名填入mist，密码填入创建服务器时输入的密码，如上图所示。然后建议点击“保存”，并保存密码后登录，便可成功连接。成功连接后，可以查看到服务器的文件，随意拖拽本地文件到该软件中服务器一方可实现上传，将服务器中的文件拖拽出来可实现下载。
