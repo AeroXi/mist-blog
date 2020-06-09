@@ -14,19 +14,27 @@ SFTP，然后确认。
 
 {% asset_img 1.png %}
 
-配置远程服务器的 IP，端口，用户名和密码，Root Path 是项目文件在远程服务器中的根目录
+添加SSH configuration
+
+{% asset_img 4.png %}
 
 以下面的一条 ssh 命令为例：
 
-ssh mist@47.103.52.232 -p 56771
+ssh mist**@**quinv.mistgpu.xyz**  -p **16000**
 
-用户名（user name）为 mist，ip(host) 为 47.103.52.232，端口（port）为 56771，密码(Password)是创建服务器时填写的。
+mist填入User name一栏
 
-Root path 则需设置成服务器根目录 /home/mist
+quinv.mistgpu.xyz填入Host一栏
+
+16000填入port一栏
+
+Password是创建服务器时设置的密码
+
+Root path 点击auto detect即可，设置成 /home/mist
 
 {% asset_img 2.png %}
 
-进入settings中的这一页面，进入Python interpreter，如图更改project interpreter为远程服务器中的Python（默认路径在 /usr/local/bin/python）
+进入settings中的这一页面，进入Python interpreter，如图更改project interpreter为 /usr/local/bin/python
 
 点击 Mappings，将 Local Path 设置为自己电脑的工程目录。将 Deployment path on server 设置为远程服务器中的工程目录
 （上图中的是还未更改的状态）
