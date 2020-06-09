@@ -20,7 +20,7 @@ SFTP，然后确认。
 
 以下面的一条 ssh 命令为例：
 
-ssh mist@quinv.mistgpu.xyz  -p 16000
+`ssh mist@quinv.mistgpu.xyz  -p 16000`
 
 mist填入User name一栏
 
