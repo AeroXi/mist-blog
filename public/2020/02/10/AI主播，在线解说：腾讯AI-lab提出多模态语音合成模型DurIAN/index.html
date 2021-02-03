@@ -149,15 +149,15 @@
     
 
 
-    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="blog.mistgpu.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/"><meta property="og:locale" content="zh-CN"><meta name="description" content="论文笔记：腾讯AI lab多模态语音合成模型DurIAN论文：DurIAN: Duration Informed Attention Network For Multimodal Synthesis，演示地址。 概述DurIAN是腾讯AI lab于19年9月发布的一篇论文，主体思想和FastSpeech类似，都是抛弃attention结构，使用一个单独的模型来预测alignment，从而来避免合成 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/model.PNG"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/seq.PNG"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/style_code.PNG"><meta property="article:published_time" content="2020-02-10T11:45:55.000Z"><meta property="article:modified_time" content="2021-02-03T08:21:09.851Z"><meta property="og:updated_time" content="2021-02-03T08:21:09.851Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/"><meta property="og:locale" content="zh-CN"><meta name="description" content="论文笔记：腾讯AI lab多模态语音合成模型DurIAN论文：DurIAN: Duration Informed Attention Network For Multimodal Synthesis，演示地址。 概述DurIAN是腾讯AI lab于19年9月发布的一篇论文，主体思想和FastSpeech类似，都是抛弃attention结构，使用一个单独的模型来预测alignment，从而来避免合成 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/model.PNG"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/seq.PNG"><meta property="og:image" content="/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/style_code.PNG"><meta property="article:published_time" content="2020-02-10T11:45:55.000Z"><meta property="article:modified_time" content="2021-02-03T08:21:09.851Z"><meta property="og:updated_time" content="2021-02-03T08:21:09.851Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
 
     
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/">
+    <link rel="canonical" href="blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/">
 
     <meta name="generator" content="Hexo 4.2.1">
 
@@ -178,18 +178,18 @@
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/",
+    "url": "blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/",
     "@type": "BlogPosting",
-    "logo": "blog.mistgpu.cn/img/large.png",
+    "logo": "blog.mistgpu.com/img/large.png",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/"
+        "@id": "blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/"
     },
     "headline": "AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN | MistGPU博客",
     
     "image": {
         "@type": "ImageObject",
-        "url": "blog.mistgpu.cn/img/large.png"
+        "url": "blog.mistgpu.com/img/large.png"
     },
     
     "datePublished": "2020-02-10T11:45:55.000Z",
@@ -199,7 +199,7 @@
         "name": "Deep Mist Tech",
         "image": {
             "@type": "ImageObject",
-            "url": "blog.mistgpu.cn/img/medium.png"
+            "url": "blog.mistgpu.com/img/medium.png"
         },
         "description": "分享深度学习知识,<a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>"
     },
@@ -208,13 +208,13 @@
         "name": "MistGPU博客",
         "logo": {
             "@type": "ImageObject",
-            "url": "blog.mistgpu.cn/img/large.png"
+            "url": "blog.mistgpu.com/img/large.png"
         }
     },
     
     "potentialAction": {
         "@type": "SearchAction",
-        "target": "blog.mistgpu.cn/search.html?s={search_term_string}",
+        "target": "blog.mistgpu.com/search.html?s={search_term_string}",
         "query-input": "required name=search_term_string"
     },
     
@@ -256,7 +256,7 @@
         <a href="/search.html" class="navbar-link">搜索</a>
     
     
-        <a href="https://mistgpu.cn" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
+        <a href="https://mistgpu.com" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
     
     
         <div class="dropdown dropdown-right">
@@ -266,7 +266,7 @@
         <!-- Share Weibo -->
         
         <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=blog.mistgpu.cn&pic=blog.mistgpu.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=blog.mistgpu.com&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
         </li>
         
 
@@ -285,21 +285,21 @@
         <!-- Share QQ -->
         
         <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.cn/img/large.png&url=blog.mistgpu.cn" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
         </li>
         
 
         <!-- Share Telegram -->
         
         <li class="menu-item">
-            <a href="https://t.me/share/url?url=blog.mistgpu.cn&text=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+            <a href="https://t.me/share/url?url=blog.mistgpu.com&text=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
         </li>
         
 
         <!-- QRCode -->
         
         <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFWElEQVR42u3d3W7TUBBFYb//S4erSgg8s9c+LkiVV2+A0JzYX6XR/CW9Pn59LglEEEEEEUQQYUW4lq+v/0cHDs/58/nNa0znbH///cztvkQQQYQZYbuA6UWmf989Pp23PU7O2x5DsCKIIMKI0ASrO4j0+Hb2BDm9dgqA9L5EEEGEHmF74QaPBlwSXLfzRBBBhH+LQIJUSp624LYF1pSspWsRQQQRzhFSQ2M6lATRLbhtN5uCYxtERRBBBIZAip2f+Oe3d5tFEOEFCGSo0gxOSHOFBuDUUH0yLBJBBBHm/QSSEG3Bp1qMCChkKLs1V5qkSgQRRJiTpZMBa2rONo2VLfFJSyDphzMWUyKIIMKYLNEEZLspMkBNC1ZkqEIR44KICCKIEAsoMuygi1wtVrsUkm54C/oiiCDCjECDC0lGmqJqS8BOkOjfRRBBhAvPIptC5rQZQx6nCdSjpRIRRBBhDYwnL04ar7RgSsGZJEO0qBJBBBFyo/UkMaGAKVHaiqN0RhrGVN1mEUR4OQIppFJylAqiZsiTMJphTxwCiSCCCOuSxpaQbE2UBEkHuKePp4A73qcIIoiwDmRJEzTdHB3ANFi04UsCrQgiiJARmiWM1Nwkw5Mm+YnBrUCLEygRRBAhvqGqCY5ksapdKG+Q2kaOCCKI8ImBcUsySEGz3RwpxhqMdhlMBBFEYAg0AUmLlClZOm2MNsvdtFATQQQRut3mZkjSLFG1QZQ0R9KNj98vgggixCUNmkDRJOZkSEKXPUjwPtpUEUGElyO0wxXShHmywEUbtvTxmCyJIIIIcZGhWnYoLjg1UujCKAnasVkjgggiHAfGdGCTZDXLYanJQnFvr0EEEUQYC6g0SIkLD6BJQs5P8PR7RBBBhOcIaYhJBzR0qJIC83YTNEGrGq0iiCBC9QGPdDiSBqpToEyLY3SRhBZ6Ioggwlme0CCkpmtzflrAQstZW7EngggioCWNJoEiC1VtodMOgul1/BUoRRBBhLXRmgadtMAhSQtZqCBNWhKYx4JQBBFEWAsocoHkwpuFLbJodXINaFAkgggijMkSCSxNgfVkoYM2ZknTZX1dEUQQYS2gUqChjdEUFGlhRs6jDd/bexRBBBGqRitZtGySpbYAq4arAEoEEURgCLRoaRIqErRoA5UkP7RRK4IIIvA8gSYtaUFzC4Jk2Wtrzm7XkeDWRqsIIojwIYGwGYw2gxeyAEKD4clzRRBBBPYBdKmBmRKVZmEjLXfRgokERtRZEkEEEeoPiWq+LxVXtPlBGzCp0RMzRhFEEAEHKFqYkGZtWvQii1e0SYuXNEQQQQTU0EgJx0khQ5OxkyFMuh4RRBCB7yzRwUVaiiCBkBReBJ+gjomdCCKIgJOlOLi4LvTGEXLzTeOGDmu35RARRBCB/eIbsojRBC98MQeNmP+25S6CCC9FaJekyVB2C4SnBVpK4lJxF7fcRRBBBFSItMuTZPFju3CyCHoSdEUQQYSMQJqbpFl6AkWXNFJwJQE9TqBEEEEE/Iswt4ZqSoqeNl2aHw55U4kIIojAP6M1JT00OdnAaMDbbqRdJsWBUQQRXo5Ah5jNsGULiHTBY0q+aKJEGrIiiCBCDoxN8pRuuLnRkzeIkAWQrbEjgggi5M9oTQFxK5JSg5QuXzWD3dTMxYFRBBFE+KThJhmiEIDU0E1n0sHLdv7ttYggggg1Am10pgWLkyEJKY5oc/f2hyuCCCI8QjgdyiSMpmAiSRR5rggiiHAdFVDpQteB58V/eR0ZrtCmCVkQFUEEEZ7NHUhjswmOTTO2HQ6lokoEEUSYEd78JYIIIogggggi3H79AtTy4kyhWqyfAAAAAElFTkSuQmCC" alr="QRCode">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFW0lEQVR42u2dQW5bMRQDff9Lu6sCaWuRQzldtJ6/aZHYsv4YYPRIOnk8vZ4PEQhBCEIQghCEECE8wvXz+18f++p5vyz85Xm/r3Faq615Wu+0J3JfQhCCEM4QXorG4QVf3fSrx5422QCe1nqUi+zlj/0IQQhCOEJIgpiEq91Yg3ISsiTEr/Zwem5cUwhCEMIMoR1eVmG8FVp6gBKCEITwdyGcNt82TAYvAvh007eCLQQhCIFBSIJGTJNl4Eo3cPo/MV2W/QtBCEJ4vmW0/ov/frvbLAQhfACEGlqWAwsxU4iBmoyWdvghZs5bqbQQhPBBENIhpd3saphQwWoGLhmu2sAnBCEIIZ8T1sGkGR+kULGWNNqbtQisEIQghO4ntAGkPf42ZKVCuxbD2kFKCEIQwhkCWWwRv2R0EuFrASwZ8OqBTAhCEEI1WulGSJGKDFIJXgphqKjHN0QIQhDCywHqpqS9mrTEnCXDVhvoSMlLCEIQQoaQBGcpUKzQlhtqBk4SZiEIQQgcAjmwkFCFBqw3XycgaKmstteEIAQhPJYAhJoWa4lzDWiIQNb7EYIQhFAhUON0MT9oEEPKIu8IbgxkhSAEIaAbIoeTZR1q7CaxbUBpOCsEIQiBQ6DC2QYcat6QAPj2tY/PFYIQhFDDFzLwLBuhhYnbG1tuuh6WhCAEIdTCRCpk0JImDWvbTRPjlQxRQhCCEJ6ozEnM07WsTYsTtODZylgkhBGCEITAShotZEVGBfxaMlxSOEzfuLS2EIQgBFbmbGZHE55m0qxFK2Lm3EASghCE8IidJWKukmDm5kBFQh4ymKX9VFNFCEIQwvSHY9JgRUPUNlS10JYEL7RUJgQhCOEMgYQn6wDVDkCkwEWDYmLo1oK3EIQghMlobeWtFIo8wNUEtgkmCX7rTwchCEEIKAShxWxidqzFq+8cmLCzJAQhfDgEKnIkOCHw6AGqHYyaAKLitxCEIIQjBHIz63NuDNVWElnLG7HMIQQhCCFCIINOCltWgMv6q1gjo1YIQhDCMXxZbxSXoxaTA5o4pLTRSiBCEIIQ2GegqHCtB6j1WgKZViqphyUhCEEI0y+QXIKWttkW0DRRXmCn0pgQhCCE/KGPpSRFxHApZ92EKqSEUU0aIQhBCLG41ULMVsakANvGKXRUzhKCEIQwQaBlzRZ8tMfRADiBWwesuaQhBCEIoS5IyxNJTJeQdA1ciZDXkoYQhCCEq19OTYWuvjg4jN0EtDSAEYIQhMA8xlthomFL2+CyNhVKHMgKQQhCiOZmMl4XE2YRMhrQHgeiwawRghCEsA9QzZRYDkH0+SQEasYOCYSFIAQh5ECWGKwt5GihKjFl6GFoKWfgAUoIQhBCfeCN8UJFjhooJHBdIAlBCEI4Q1iClfaiRCipqUoKWPRwdHwThSAEIUSjlRS0bgKXtHYSw2WPpHASfzoIQQhCeJJDTHuRVsAghfAmog1Ge7NmZ0kIQhAC/uBGC2yXEJWYKbelLRLICEEIQugfBLsOMgCYd+CugQwxWYQgBCGcTRVqpi5haAtmiaCSQW0VdCEIQQj8F9BR4yQNJ9T8JAecVfjS2kIQghA6BFKkSAvelDdXM/ZmuCPCLwQhCKF/YJwWtMjhhQJqhbE2NNFwRghCEML2N2SJYDVIS5FrDU9W4atmjBCEIIQjhLZYMliSgLYiBRFlbJwO5S4hCEEIdxDWEJUWLsh6i6gurycEIQjhPQhkqKIhLi1fLQeyRSSvhVEIQvgwCDTgTCZLC2puTBoaENM3RwhCEALvLNHCBRExCuWmeJXWmgIkIQhBCHMg+z9fQhCCEIQgBCEI4eX1A8XFgqzz8cCuAAAAAElFTkSuQmCC" alr="QRCode">
         </li>
         
 
@@ -349,7 +349,7 @@
     <!-- Share Weibo -->
     
     <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN&url=blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/&pic=blog.mistgpu.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=AI主播，在线解说：腾讯AI lab提出多模态语音合成模型DurIAN&url=blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
     </li>
     
 
@@ -368,21 +368,21 @@
     <!-- Share QQ -->
     
     <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.cn/img/large.png&url=blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
     </li>
     
 
     <!-- Share Telegram -->
     
     <li class="menu-item">
-        <a href="https://t.me/share/url?url=blog.mistgpu.cn/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        <a href="https://t.me/share/url?url=blog.mistgpu.com/2020/02/10/AI%E4%B8%BB%E6%92%AD%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%A7%A3%E8%AF%B4%EF%BC%9A%E8%85%BE%E8%AE%AFAI-lab%E6%8F%90%E5%87%BA%E5%A4%9A%E6%A8%A1%E6%80%81%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8BDurIAN/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
     </li>
     
 
     <!-- QRCode -->
     
     <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFWElEQVR42u3d3W7TUBBFYb//S4erSgg8s9c+LkiVV2+A0JzYX6XR/CW9Pn59LglEEEEEEUQQYUW4lq+v/0cHDs/58/nNa0znbH///cztvkQQQYQZYbuA6UWmf989Pp23PU7O2x5DsCKIIMKI0ASrO4j0+Hb2BDm9dgqA9L5EEEGEHmF74QaPBlwSXLfzRBBBhH+LQIJUSp624LYF1pSspWsRQQQRzhFSQ2M6lATRLbhtN5uCYxtERRBBBIZAip2f+Oe3d5tFEOEFCGSo0gxOSHOFBuDUUH0yLBJBBBHm/QSSEG3Bp1qMCChkKLs1V5qkSgQRRJiTpZMBa2rONo2VLfFJSyDphzMWUyKIIMKYLNEEZLspMkBNC1ZkqEIR44KICCKIEAsoMuygi1wtVrsUkm54C/oiiCDCjECDC0lGmqJqS8BOkOjfRRBBhAvPIptC5rQZQx6nCdSjpRIRRBBhDYwnL04ar7RgSsGZJEO0qBJBBBFyo/UkMaGAKVHaiqN0RhrGVN1mEUR4OQIppFJylAqiZsiTMJphTxwCiSCCCOuSxpaQbE2UBEkHuKePp4A73qcIIoiwDmRJEzTdHB3ANFi04UsCrQgiiJARmiWM1Nwkw5Mm+YnBrUCLEygRRBAhvqGqCY5ksapdKG+Q2kaOCCKI8ImBcUsySEGz3RwpxhqMdhlMBBFEYAg0AUmLlClZOm2MNsvdtFATQQQRut3mZkjSLFG1QZQ0R9KNj98vgggixCUNmkDRJOZkSEKXPUjwPtpUEUGElyO0wxXShHmywEUbtvTxmCyJIIIIcZGhWnYoLjg1UujCKAnasVkjgggiHAfGdGCTZDXLYanJQnFvr0EEEUQYC6g0SIkLD6BJQs5P8PR7RBBBhOcIaYhJBzR0qJIC83YTNEGrGq0iiCBC9QGPdDiSBqpToEyLY3SRhBZ6Ioggwlme0CCkpmtzflrAQstZW7EngggioCWNJoEiC1VtodMOgul1/BUoRRBBhLXRmgadtMAhSQtZqCBNWhKYx4JQBBFEWAsocoHkwpuFLbJodXINaFAkgggijMkSCSxNgfVkoYM2ZknTZX1dEUQQYS2gUqChjdEUFGlhRs6jDd/bexRBBBGqRitZtGySpbYAq4arAEoEEURgCLRoaRIqErRoA5UkP7RRK4IIIvA8gSYtaUFzC4Jk2Wtrzm7XkeDWRqsIIojwIYGwGYw2gxeyAEKD4clzRRBBBPYBdKmBmRKVZmEjLXfRgokERtRZEkEEEeoPiWq+LxVXtPlBGzCp0RMzRhFEEAEHKFqYkGZtWvQii1e0SYuXNEQQQQTU0EgJx0khQ5OxkyFMuh4RRBCB7yzRwUVaiiCBkBReBJ+gjomdCCKIgJOlOLi4LvTGEXLzTeOGDmu35RARRBCB/eIbsojRBC98MQeNmP+25S6CCC9FaJekyVB2C4SnBVpK4lJxF7fcRRBBBFSItMuTZPFju3CyCHoSdEUQQYSMQJqbpFl6AkWXNFJwJQE9TqBEEEEE/Iswt4ZqSoqeNl2aHw55U4kIIojAP6M1JT00OdnAaMDbbqRdJsWBUQQRXo5Ah5jNsGULiHTBY0q+aKJEGrIiiCBCDoxN8pRuuLnRkzeIkAWQrbEjgggi5M9oTQFxK5JSg5QuXzWD3dTMxYFRBBFE+KThJhmiEIDU0E1n0sHLdv7ttYggggg1Am10pgWLkyEJKY5oc/f2hyuCCCI8QjgdyiSMpmAiSRR5rggiiHAdFVDpQteB58V/eR0ZrtCmCVkQFUEEEZ7NHUhjswmOTTO2HQ6lokoEEUSYEd78JYIIIogggggi3H79AtTy4kyhWqyfAAAAAElFTkSuQmCC" alt="QRCode">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFW0lEQVR42u2dQW5bMRQDff9Lu6sCaWuRQzldtJ6/aZHYsv4YYPRIOnk8vZ4PEQhBCEIQghCEECE8wvXz+18f++p5vyz85Xm/r3Faq615Wu+0J3JfQhCCEM4QXorG4QVf3fSrx5422QCe1nqUi+zlj/0IQQhCOEJIgpiEq91Yg3ISsiTEr/Zwem5cUwhCEMIMoR1eVmG8FVp6gBKCEITwdyGcNt82TAYvAvh007eCLQQhCIFBSIJGTJNl4Eo3cPo/MV2W/QtBCEJ4vmW0/ov/frvbLAQhfACEGlqWAwsxU4iBmoyWdvghZs5bqbQQhPBBENIhpd3saphQwWoGLhmu2sAnBCEIIZ8T1sGkGR+kULGWNNqbtQisEIQghO4ntAGkPf42ZKVCuxbD2kFKCEIQwhkCWWwRv2R0EuFrASwZ8OqBTAhCEEI1WulGSJGKDFIJXgphqKjHN0QIQhDCywHqpqS9mrTEnCXDVhvoSMlLCEIQQoaQBGcpUKzQlhtqBk4SZiEIQQgcAjmwkFCFBqw3XycgaKmstteEIAQhPJYAhJoWa4lzDWiIQNb7EYIQhFAhUON0MT9oEEPKIu8IbgxkhSAEIaAbIoeTZR1q7CaxbUBpOCsEIQiBQ6DC2QYcat6QAPj2tY/PFYIQhFDDFzLwLBuhhYnbG1tuuh6WhCAEIdTCRCpk0JImDWvbTRPjlQxRQhCCEJ6ozEnM07WsTYsTtODZylgkhBGCEITAShotZEVGBfxaMlxSOEzfuLS2EIQgBFbmbGZHE55m0qxFK2Lm3EASghCE8IidJWKukmDm5kBFQh4ymKX9VFNFCEIQwvSHY9JgRUPUNlS10JYEL7RUJgQhCOEMgYQn6wDVDkCkwEWDYmLo1oK3EIQghMlobeWtFIo8wNUEtgkmCX7rTwchCEEIKAShxWxidqzFq+8cmLCzJAQhfDgEKnIkOCHw6AGqHYyaAKLitxCEIIQjBHIz63NuDNVWElnLG7HMIQQhCCFCIINOCltWgMv6q1gjo1YIQhDCMXxZbxSXoxaTA5o4pLTRSiBCEIIQ2GegqHCtB6j1WgKZViqphyUhCEEI0y+QXIKWttkW0DRRXmCn0pgQhCCE/KGPpSRFxHApZ92EKqSEUU0aIQhBCLG41ULMVsakANvGKXRUzhKCEIQwQaBlzRZ8tMfRADiBWwesuaQhBCEIoS5IyxNJTJeQdA1ciZDXkoYQhCCEq19OTYWuvjg4jN0EtDSAEYIQhMA8xlthomFL2+CyNhVKHMgKQQhCiOZmMl4XE2YRMhrQHgeiwawRghCEsA9QzZRYDkH0+SQEasYOCYSFIAQh5ECWGKwt5GihKjFl6GFoKWfgAUoIQhBCfeCN8UJFjhooJHBdIAlBCEI4Q1iClfaiRCipqUoKWPRwdHwThSAEIUSjlRS0bgKXtHYSw2WPpHASfzoIQQhCeJJDTHuRVsAghfAmog1Ge7NmZ0kIQhAC/uBGC2yXEJWYKbelLRLICEEIQugfBLsOMgCYd+CugQwxWYQgBCGcTRVqpi5haAtmiaCSQW0VdCEIQQj8F9BR4yQNJ9T8JAecVfjS2kIQghA6BFKkSAvelDdXM/ZmuCPCLwQhCKF/YJwWtMjhhQJqhbE2NNFwRghCEML2N2SJYDVIS5FrDU9W4atmjBCEIIQjhLZYMliSgLYiBRFlbJwO5S4hCEEIdxDWEJUWLsh6i6gurycEIQjhPQhkqKIhLi1fLQeyRSSvhVEIQvgwCDTgTCZLC2puTBoaENM3RwhCEALvLNHCBRExCuWmeJXWmgIkIQhBCHMg+z9fQhCCEIQgBCEI4eX1A8XFgqzz8cCuAAAAAElFTkSuQmCC" alt="QRCode">
     </li>
     
 
@@ -478,7 +478,7 @@
     <!-- footer copyright -->
     
         <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="blog.mistgpu.cn">MistGPU博客</a>
+            <a class="footer-copyright-a" href="blog.mistgpu.com">MistGPU博客</a>
         </p>
 
     <!-- footer custom text -->
@@ -537,7 +537,7 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU出租 2080Ti 免配环境 &nbsp;<a href="https://mistgpu.cn" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU出租 2080Ti 免配环境 &nbsp;<a href="https://mistgpu.com" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
     </body>
 
 </html>
