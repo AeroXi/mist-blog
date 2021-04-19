@@ -33,8 +33,12 @@ Win10系统已自带`ssh`，`scp`等命令，在命令行或`Powershell`中都�
 按下`Command + 空格键`，在Spotlight中输入`终端`即可打开终端。
 ## Linux
 在应用程序中找到终端即可。Ubuntu系统可用`Ctrl - alt - t`快捷键启动。
+
+---
 ## Win10以下或SSH命令不可用
+
 **以下几种方法的主机名(Host)和端口均可在服务器的`附加功能-使用帮助`中看到。**
+
 ### PuTTY
 从[PuTTY官网](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)下载PuTTY安装即可，可选择msi安装包一键安装，也可只下载PuTTY程序本身直接运行。
 {% asset_img 5.png %}
@@ -68,7 +72,8 @@ Win10系统已自带`ssh`，`scp`等命令，在命令行或`Powershell`中都�
 {% asset_img xs3.png %}
 在接下来的窗口（如上图所示）中输入创建服务器时的密码，并勾选“记住密码”后点击确定可成功连接。
 
-# 操作
+---
+# 常用操作
 连接好进入命令行终端后便可开始操作了，常用的操作命令包括
 - `ls -l` 查看当前目录下的文件; `ls -l /data` 查看云存储中的文件
 - `cd 目录名` 进入到指定目录; `cd ../` 返回到上一级目录; `cd ~/`返回到主目录
@@ -77,5 +82,9 @@ Win10系统已自带`ssh`，`scp`等命令，在命令行或`Powershell`中都�
 - `python3 文件名.py` 运行指定的python程序
 - `pip install 包名 --user` 使用`pip`安装模块
 - `nvidia-smi` 查看当前显卡使用情况，可用`py3smi`代替
-- `unzip 文件名.zip -d 目录名` 将该`文件`解压到指定`目录`下
-- `zip -rq9 文件名.zip 目录` 将`目录`下的所有文件压缩成`文件`
+- `unzip 要解压的文件名.zip -d 解压后的目录名` 将该`文件`解压到指定`目录`下
+- `zip -r9 保存后文件名.zip 要压缩的目录名` 将`目录`下的所有文件压缩成`文件`
+
+# 注意事项
+- 所有命令均需要以英文半角状态输入，请特别留意不要漏掉命令中的空格，否则会报错。
+- 长时间运行的任务请务必挂到后台运行，详情请见[常见问题](https://mistgpu.com/faq)
