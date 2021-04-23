@@ -21,7 +21,7 @@ TensorBoard是Tensorflow的可视化工具，它通过对Tensoflow程序运行�
 {% asset_img TB-1.png %}
 其次点击**使用帮助**，获取开放端口。
 
-接下来进入到命令行中，输入`tensorboard --host=0.0.0.0 --logdir=日志文件目录 --port=开放端口`
+接下来进入到命令行中，输入`tensorboard --host=0.0.0.0 --port=开放端口 --logdir=日志文件目录`
 
 例如这里开放端口是10044
 
