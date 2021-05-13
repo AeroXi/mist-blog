@@ -13,6 +13,7 @@ tags: miniconda
 # 创建虚拟环境
 在终端中输入`conda create -n 环境名`即可，环境名可任意取
 也可以在创建的时候指定所需要的包，建议用`conda create -n 环境名 python=3.6`创建。
+*推荐创建时一并安装所有需要的包，这样conda可以自行匹配互相兼容的版本。*
 
 {% asset_img 1.png %}
 
@@ -59,8 +60,10 @@ PyCharm具体配置教程可参考[http://blog.mistgpu.com/2021/02/01/PyCharm连
 {% asset_img 8.png %}
 
 通过`conda search cudatoolkit`可以看到可安装的版本，安装使用`conda install cudatoolkit=版本号`。
+**推荐一条命令内安装好所有需要的包**，如`conda install tensorflow-gpu=1.13.1 cudatoolkit keras ......`。
+
 本例安装cuda9.2，`conda install cudatoolkit=9.2`
-在虚拟环境里还需要装需要用到的包，使用[PyTorch官方](https://pytorch.org/get-started/locally/)的代码安装后测试成功。
+在虚拟环境里还需要装需要用到的包，使用[PyTorch官方](https://pytorch.org/get-started/previous-versions/)的代码安装后测试成功。
 {% asset_img 9.png %}
 # conda下载慢 / CondaHTTPError
 {% asset_img 7.png %}

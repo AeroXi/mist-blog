@@ -31,6 +31,8 @@ PyCharm已有中文语言包，可在`PyCharm设置 - Plugins`中搜索安装，
 如不确定也可以点击红箭头指的使用帮助查看。
 
 下一步中在`解释器`一栏(蓝框)的最后加上3，变成`/usr/bin/python3`
+- 若使用默认环境，**必须在此处加上3**，否则找不到预装的包。
+- 若使用conda虚拟环境，则需要替换为实际解释器路径。详见[conda教程](http://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/#%E5%9C%A8PyCharm%E4%B8%AD%E4%BD%BF%E7%94%A8conda%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8E%AF%E5%A2%83)
 
 {% asset_img 5.png %}
 
@@ -74,6 +76,7 @@ PyCharm已有中文语言包，可在`PyCharm设置 - Plugins`中搜索安装，
 {% asset_img 12.png %}
 ## 从服务器上下载文件
 训练生成的文件都会保存在服务器上，可以点击`远程主机`并找到所需要的文件，右键点击就可以下载到自己的电脑上了。
+若找不到`远程主机`，则需要在`工具(Tools)菜单栏`中找到`部署(Deployment)`后点击`浏览远程主机(Browse remote host)`。
 {% asset_img 13.png %}
 
 ***
