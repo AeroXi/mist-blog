@@ -57,6 +57,8 @@ PyCharm具体配置教程可参考[http://blog.mistgpu.com/2021/02/01/PyCharm连
 # 降级cuda版本
 在conda中可以通过安装`cudatoolkit`来降级cuda版本。
 
+**RTX30系、A6000、A100机型不支持降级到cuda11以下。*
+
 {% asset_img 8.png %}
 
 通过`conda search cudatoolkit`可以看到可安装的版本，安装使用`conda install cudatoolkit=版本号`。
