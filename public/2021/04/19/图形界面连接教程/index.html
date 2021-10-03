@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>图形界面连接教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="图形界面连接教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="MistGPU下的所有机器已在最新镜像中支持图形界面访问，具体使用方法如下。 获取IP及端口点击服务器附加功能一列的使用帮助，查看服务器IP以及图形界面端口。   连接WindowsWindows平台使用自带的远程桌面连接即可，此应用可在开始菜单中搜索找到。  之后在计算机一栏中输入服务器IP:图形界面端口回车即可。如本例中输入gpu28.mistgpu.com:40501。  之后点击连接即可， - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="图形界面 远程桌面连接, 博客,人工智能,深度学习,GPU"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/help.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/win-1.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/win-2.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-1.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-2.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-3.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/linux-1.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/login.png"><meta property="og:image" content="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/layout.png"><meta property="article:published_time" content="2021-04-19T14:06:06.000Z"><meta property="article:modified_time" content="2021-10-03T03:48:59.043Z"><meta property="og:updated_time" content="2021-10-03T03:48:59.043Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="图形界面 远程桌面连接, 博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "图形界面连接教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2021-04-19T14:06:06.000Z",
+    "dateModified": "2021-10-03T03:48:59.043Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "图形界面 远程桌面连接, 博客,人工智能,深度学习,GPU",
+    "description": "MistGPU下的所有机器已在最新镜像中支持图形界面访问，具体使用方法如下。 获取IP及端口点击服务器附加功能一列的使用帮助，查看服务器IP以及图形界面端口。   连接WindowsWindows平台使用自带的远程桌面连接即可，此应用可在开始菜单中搜索找到。  之后在计算机一栏中输入服务器IP:图形界面端口回车即可。如本例中输入gpu28.mistgpu.com:40501。  之后点击连接即可， - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a href="https://mistgpu.com" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=blog.mistgpu.com&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=图形界面连接教程&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=blog.mistgpu.com&text=图形界面连接教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAAAAAAYplnuAAACsUlEQVR42u3b0W6DQAxEUf7/p9vXCGU9dxYSKeLyUrWhcIjqrtd2jr8fPA7RokWLfiD6GI7X18/nnl97vd7q997djzpEi27Qb//oFxckD3K+Tno47BAtukCvbp4C74xbBVV6QHSOaNE3oFfB9O771fVI0IkW/W10WhhSUrU6V7ToT6FJYKySnynISMDenuWJfjw6bWy/9fXW3bjox6K3CoFhI5sCm5x/e9VU9GPQZFEgN0ybhGmhWV0PZXmiRS8WF3JjulA06LTZFS36LvR08WnzSn6W3pDlOaJFA/SUuDTNyeb302KyXMxEiy7QU5LUFN6bjQLZTMeNrWjRZSBODXpalGyS/qnJKlo0RadNbVpMdoqWOw8qWjRBN437lPSQwar0IFUBUrToBbodYE2NUlLAJI3+5SZAtOiAnhpCdIFpvt8JaNGiKXpK8EnBnH4AYnoT6qK6aNGhqJ4Wj6ZITj+wgAqOaXERLRoUa+jwavOhhZQwpSaraNEtmha3SZDSIS3SCI0VJtGiQ0OfDGLR4uG00JDhLjx4JVo0bH6Sm11NmJphRdGi200ADSqyiKTG6VS4xIuLaNHg/zRJZHaGVOggVz2FIFo02CPSBJ0UK9MgVrou3rmIFr0YUiHNfNJMahIougEQLbpBk6TlSvKTCujbCZNo0WFxSUlNauxMN5xex2+AaNEAfcCDPEQKPJToT4MsokUDdBMgZBGZgjQF51bCJFp0EYhp8SGLChnGSsEvWnSDTgdpgtJASgl/XJBEiwboKhCGQZVmCIA+sGjRu2gKSIFDiuOkQIkSJtGiy6HvlAClongqsh/FIVr0J9B00DttgtPg4lhgFy36BvS00U0bWHpN0ggVLbpFN8WXK8XE6X6rJEq06BZNmkNXEiLaGIrNWNGiAfqXDtGiRYt+EPofscUL6Yqv/KQAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">图形界面连接教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2021-04-19</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=图形界面连接教程&url=blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=blog.mistgpu.com/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAAAAAAYplnuAAACsUlEQVR42u3b0W6DQAxEUf7/p9vXCGU9dxYSKeLyUrWhcIjqrtd2jr8fPA7RokWLfiD6GI7X18/nnl97vd7q997djzpEi27Qb//oFxckD3K+Tno47BAtukCvbp4C74xbBVV6QHSOaNE3oFfB9O771fVI0IkW/W10WhhSUrU6V7ToT6FJYKySnynISMDenuWJfjw6bWy/9fXW3bjox6K3CoFhI5sCm5x/e9VU9GPQZFEgN0ybhGmhWV0PZXmiRS8WF3JjulA06LTZFS36LvR08WnzSn6W3pDlOaJFA/SUuDTNyeb302KyXMxEiy7QU5LUFN6bjQLZTMeNrWjRZSBODXpalGyS/qnJKlo0RadNbVpMdoqWOw8qWjRBN437lPSQwar0IFUBUrToBbodYE2NUlLAJI3+5SZAtOiAnhpCdIFpvt8JaNGiKXpK8EnBnH4AYnoT6qK6aNGhqJ4Wj6ZITj+wgAqOaXERLRoUa+jwavOhhZQwpSaraNEtmha3SZDSIS3SCI0VJtGiQ0OfDGLR4uG00JDhLjx4JVo0bH6Sm11NmJphRdGi200ADSqyiKTG6VS4xIuLaNHg/zRJZHaGVOggVz2FIFo02CPSBJ0UK9MgVrou3rmIFr0YUiHNfNJMahIougEQLbpBk6TlSvKTCujbCZNo0WFxSUlNauxMN5xex2+AaNEAfcCDPEQKPJToT4MsokUDdBMgZBGZgjQF51bCJFp0EYhp8SGLChnGSsEvWnSDTgdpgtJASgl/XJBEiwboKhCGQZVmCIA+sGjRu2gKSIFDiuOkQIkSJtGiy6HvlAClongqsh/FIVr0J9B00DttgtPg4lhgFy36BvS00U0bWHpN0ggVLbpFN8WXK8XE6X6rJEq06BZNmkNXEiLaGIrNWNGiAfqXDtGiRYt+EPofscUL6Yqv/KQAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获取IP及端口"><span class="post-toc-number">1.</span> <span class="post-toc-text">获取IP及端口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#连接"><span class="post-toc-number">2.</span> <span class="post-toc-text">连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Windows</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#macOS"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">macOS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Linux</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#登录"><span class="post-toc-number">3.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#连接不上"><span class="post-toc-number">5.</span> <span class="post-toc-text">连接不上</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>MistGPU下的所有机器已在最新镜像中支持图形界面访问，具体使用方法如下。</p>
+<h1 id="获取IP及端口"><a href="#获取IP及端口" class="headerlink" title="获取IP及端口"></a>获取IP及端口</h1><p>点击服务器附加功能一列的使用帮助，查看<code>服务器IP</code>以及<code>图形界面端口</code>。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/help.png" class="">
+
+<h1 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>Windows平台使用自带的远程桌面连接即可，此应用可在开始菜单中搜索找到。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/win-1.png" class="">
+<p>之后在计算机一栏中输入<code>服务器IP:图形界面端口</code>回车即可。如本例中输入<code>gpu28.mistgpu.com:40501</code>。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/win-2.png" class="">
+<p>之后点击<code>连接</code>即可，如弹出证书警告点击<code>是</code>。</p>
+<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>macOS用户需要先在应用商店中搜索远程桌面连接，下载后安装即可。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-1.png" class="">
+<p>安装完成后打开应用，点击工具栏的➕，选择添加计算机。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-2.png" class="">
+<p>之后在计算机名称中输入<code>服务器IP:图形界面端口</code>即可，同理本例中输入<code>gpu28.mistgpu.com:40501</code>。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/mac-3.png" class="">
+<p>添加完成后双击连接即可。连接时会要求输入用户名和密码。</p>
+<ul>
+<li>用户名为<code>mist</code></li>
+<li>密码同SSH连接密码，为创建服务器时设置的</li>
+</ul>
+<p>之后确认并同意证书即可使用了</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>Ubuntu图形界面自带有<code>Remmina</code>应用可使用，如未安装此应用可使用<a href="https://remmina.org/how-to-install-remmina/#ubuntu" target="_blank" rel="noopener">官网</a>提供的命令安装。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/linux-1.png" class="">
+<p>启动后选择<code>RDP</code>协议，输入<code>服务器IP:图形界面端口</code>回车即可，同理本例中输入<code>gpu28.mistgpu.com:40501</code>。</p>
+<h1 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h1><p>mac用户在连接时已经输入过用户名和密码，可跳过此步骤<br>Windows和Linux用户连接后均有如下界面，</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/login.png" class="">
+
+<ul>
+<li>用户名为<code>mist</code></li>
+<li>密码同SSH连接密码，为创建服务器时设置的</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>若是初次连接服务器，在连接后会询问图形界面布局，此对话框选择左边的<code>Use default config</code>即可。</p>
+<img src="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/layout.png" class="">
+
+<p>之后便可正常使用了，目前图形界面内无法打开云存储(<code>/data/</code>和<code>~/cloud/</code>)目录，可通过命令行访问文件或复制到主目录下使用。</p>
+<h1 id="连接不上"><a href="#连接不上" class="headerlink" title="连接不上"></a>连接不上</h1><ul>
+<li>早期镜像无图形界面，可联系客服手动安装。</li>
+<li>请确认标点符号为英文符号。</li>
+<li>重启机器后服务可能没有自动启动，需要在<a href="http://blog.mistgpu.com/2021/02/03/SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">服务器终端</a>输入<code>sudo service xrdp restart</code>手动重启服务。</li>
+</ul>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2021-10-03");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2021-04-19T14:06:06.000Z" itemprop="datePublished">2021-04-19</time>
+
+    , 最后修改于&nbsp;<time datetime="2021-10-03T03:48:59.043Z" itemprop="dateModified">2021-10-03</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" rel="tag">#&nbsp;图形界面 远程桌面连接</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2021/06/17/%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">公司介绍</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2021/02/03/SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">SSH连接教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU出租 2080Ti 免配环境 &nbsp;<a href="https://mistgpu.com" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>
