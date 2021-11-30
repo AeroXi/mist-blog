@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Maintainer | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Maintainer | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="blog.mistgpu.com/2021/11/30/Maintainer/"><meta property="og:locale" content="zh-CN"><meta name="description" content="Maintainer脚本(以下简称脚本)通过SSH每3-5分钟遍历所有上线的机器，检查机器各状态是否正常。若有异常情况脚本将尝试自动处理在内部群内发送通知。 具体检查项目   名称 主要命令    当前运行的容器列表 sudo docker ps &amp;#124; grep 端口号   docker目录剩余空间 df -h &#x2F;var&#x2F;lib&#x2F;docker&#x2F;   gpu目录下文件列表 ls ~&#x2F;gpu&#x2F; - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="article:published_time" content="2021-11-30T07:47:50.855Z"><meta property="article:modified_time" content="2021-11-30T07:49:08.373Z"><meta property="og:updated_time" content="2021-11-30T07:49:08.373Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="blog.mistgpu.com/2021/11/30/Maintainer/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "blog.mistgpu.com/2021/11/30/Maintainer/",
+    "@type": "BlogPosting",
+    "logo": "blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "blog.mistgpu.com/2021/11/30/Maintainer/"
+    },
+    "headline": "Maintainer | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2021-11-30T07:47:50.855Z",
+    "dateModified": "2021-11-30T07:49:08.373Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "Maintainer脚本(以下简称脚本)通过SSH每3-5分钟遍历所有上线的机器，检查机器各状态是否正常。若有异常情况脚本将尝试自动处理在内部群内发送通知。 具体检查项目   名称 主要命令    当前运行的容器列表 sudo docker ps &amp;amp;#124; grep 端口号   docker目录剩余空间 df -h /var/lib/docker/   gpu目录下文件列表 ls ~/gpu/ - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a href="https://mistgpu.cn" target="_blank" rel="noopener">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a href="https://mistgpu.com" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=blog.mistgpu.com&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=Maintainer&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=blog.mistgpu.com&text=Maintainer" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjElEQVR42u3a0Y6DMAxEUf7/p3dfqyr2jAsbhu7lhapAOEhR4tg5fgKOAwQIEI9AHM3xek/ZUHGf1S6IWIRqvLq+AryfWzSIaMR7x1n9X11fwVS7IJ6N6DCrZ0H8H4QalEB8F6KaaLrAxEFfMouC2I5QL/r0fFm0DWIrQi5azcHpT1flILYi3KClCl6cAHf1DIhcxOqB6pqTDFmhVr9B5COqJIh7OM/LjgkiAuEEpqrzqYFvlDgDcTtCdUwnoV4ueJtkK4hchGqoC3qdxMio6AIiAtFBKpQauFSHBJGPcCewDq0Sb8uPARGPUEHLpEA3nkVBxCAmCXF3E8epWRREDOKqjtcl0+SCGEQUwglE1EaeSUINRD6iS250wUsVIFtJFRCRCKcQ5xTtVaLsdHEWxDaEu1HYCVS6gpycwEBEIdxCvbN5pwtuTu0uArEd4WwEniZVTu0aABGNUIlT9bKyk4J4NMIdiCaFfRDZCCchZhVSJh8BIhbhbBR2k2ndZPZxtA1iK+LOAwQIENGIX1h/mZkYBk+lAAAAAElFTkSuQmCC" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Maintainer</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2021-11-30</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Maintainer&url=blog.mistgpu.com/2021/11/30/Maintainer/&pic=blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=blog.mistgpu.com/img/large.png&url=blog.mistgpu.com/2021/11/30/Maintainer/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=blog.mistgpu.com/2021/11/30/Maintainer/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjElEQVR42u3a0Y6DMAxEUf7/p3dfqyr2jAsbhu7lhapAOEhR4tg5fgKOAwQIEI9AHM3xek/ZUHGf1S6IWIRqvLq+AryfWzSIaMR7x1n9X11fwVS7IJ6N6DCrZ0H8H4QalEB8F6KaaLrAxEFfMouC2I5QL/r0fFm0DWIrQi5azcHpT1flILYi3KClCl6cAHf1DIhcxOqB6pqTDFmhVr9B5COqJIh7OM/LjgkiAuEEpqrzqYFvlDgDcTtCdUwnoV4ueJtkK4hchGqoC3qdxMio6AIiAtFBKpQauFSHBJGPcCewDq0Sb8uPARGPUEHLpEA3nkVBxCAmCXF3E8epWRREDOKqjtcl0+SCGEQUwglE1EaeSUINRD6iS250wUsVIFtJFRCRCKcQ5xTtVaLsdHEWxDaEu1HYCVS6gpycwEBEIdxCvbN5pwtuTu0uArEd4WwEniZVTu0aABGNUIlT9bKyk4J4NMIdiCaFfRDZCCchZhVSJh8BIhbhbBR2k2ndZPZxtA1iK+LOAwQIENGIX1h/mZkYBk+lAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体检查项目"><span class="post-toc-number">1.</span> <span class="post-toc-text">具体检查项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#处理"><span class="post-toc-number">2.</span> <span class="post-toc-text">处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行容器列表"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">运行容器列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker目录剩余空间"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">docker目录剩余空间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gpu目录"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">gpu目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#驱动"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">驱动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#falco运行状态"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">falco运行状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#机器状态"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">机器状态</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空闲-出租"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">空闲&#x2F;出租</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#故障修复"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">故障修复</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#长租确认"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">长租确认</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加故障记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">添加故障记录</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>Maintainer脚本(以下简称<strong>脚本</strong>)通过SSH每3-5分钟遍历所有上线的机器，检查机器各状态是否正常。若有异常情况脚本将尝试自动处理在内部群内发送通知。</p>
+<h2 id="具体检查项目"><a href="#具体检查项目" class="headerlink" title="具体检查项目"></a>具体检查项目</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>主要命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>当前运行的容器列表</td>
+<td>sudo docker ps &#124; grep 端口号</td>
+</tr>
+<tr>
+<td>docker目录剩余空间</td>
+<td>df -h <code>/var/lib/docker/</code></td>
+</tr>
+<tr>
+<td>gpu目录下文件列表</td>
+<td>ls <code>~/gpu/</code></td>
+</tr>
+<tr>
+<td>驱动状态</td>
+<td>nvidia-smi</td>
+</tr>
+<tr>
+<td>falco运行状态</td>
+<td>ps aux &#124; grep minerkiller</td>
+</tr>
+<tr>
+<td>机器状态</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><h3 id="运行容器列表"><a href="#运行容器列表" class="headerlink" title="运行容器列表"></a>运行容器列表</h3><p>脚本获取到机器上的运行列表后与数据库比对，会有如下几种情况：</p>
+<table>
+<thead>
+<tr>
+<th>情况描述</th>
+<th>一般触发条件</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机器上运行的容器 无法在数据库中找到</td>
+<td>创建失败后无法容器删除</td>
+<td>只报警，等待人工关闭</td>
+</tr>
+<tr>
+<td>机器上运行的容器 数据库中为关机状态</td>
+<td>关机失败</td>
+<td>第一次报警，连续两次尝试自动关闭</td>
+</tr>
+<tr>
+<td>数据库中为开机状态的容器 未在机器上运行</td>
+<td>宿主机重启</td>
+<td>只报警</td>
+</tr>
+</tbody></table>
+<h3 id="docker目录剩余空间"><a href="#docker目录剩余空间" class="headerlink" title="docker目录剩余空间"></a>docker目录剩余空间</h3><p>当硬盘剩余空间<code>&lt;100G</code>时，机主管理页内会标黄。</p>
+<p>当硬盘剩余空间<code>&lt;50G</code>时，机主管理页内会标红，且无法再创建此机器(开关机不影响)。</p>
+<h3 id="gpu目录"><a href="#gpu目录" class="headerlink" title="gpu目录"></a>gpu目录</h3><p>当卡0出租时，<code>~/gpu/</code>目录下会有名为<code>0</code>的文件，代表卡0正出租。</p>
+<p>当此目录文件状态与出租状态不对应时，脚本会自动创建/删除对应文件。</p>
+<h3 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h3><p>目前脚本仅检查<code>nvidia-smi</code>返回的<code>cuda_support</code>版本。</p>
+<p>当<code>nvidia-smi</code>执行超时，或提示掉卡时会将机器设置为故障状态并报警。</p>
+<h3 id="falco运行状态"><a href="#falco运行状态" class="headerlink" title="falco运行状态"></a>falco运行状态</h3><p>falco负责检测容器内是否有挖矿行为，若有则会强制停止容器并报警。若此服务未运行则无法检测。</p>
+<p>目前脚本若检测不到该服务，则只记录在日志中，不报警。</p>
+<h3 id="机器状态"><a href="#机器状态" class="headerlink" title="机器状态"></a>机器状态</h3><p>机器状态检查分为以下三个子模块：</p>
+<h4 id="空闲-出租"><a href="#空闲-出租" class="headerlink" title="空闲/出租"></a>空闲/出租</h4><p>当没有容器为开机状态且当前机器为占用时，自动将机器设为空闲状态；</p>
+<p>当有容器为开机状态且当前机器为空闲时，自动将机器设为占用状态。</p>
+<h4 id="故障修复"><a href="#故障修复" class="headerlink" title="故障修复"></a>故障修复</h4><p>当机器满足以下四个条件时，</p>
+<ol>
+<li>当前为故障状态</li>
+<li>运行容器列表检查无异常</li>
+<li>驱动状态正常</li>
+<li>docker目录剩余空间<code>&gt;=50g</code></li>
+</ol>
+<p>自动将机器设为非故障状态。</p>
+<h4 id="长租确认"><a href="#长租确认" class="headerlink" title="长租确认"></a>长租确认</h4><p>当机器为长租状态时，检测是否有对应长租订单。若无则报警提示；</p>
+<p>同时当有生效的长租订单且机器显示短租时，报警。</p>
+<h2 id="添加故障记录"><a href="#添加故障记录" class="headerlink" title="添加故障记录"></a>添加故障记录</h2><p>当脚本连续两次检测到以下情况时，自动添加至机器故障记录中，并扣除机器稳定分：</p>
+<ol>
+<li>公网、frp均无法连接</li>
+<li>驱动异常</li>
+</ol>
+<p>当网络波动时，脚本偶尔会因无法连接或命令执行失败而将机器设置为故障状态。一般情况下再次运行时故障状态都将被自动解除。</p>
+<p>在某些极端情况下若两次都提示失败，则会添加一条对应机器故障记录。经我们核实确定为误报后可删除对应记录并恢复稳定分。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2021-11-30");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2021-11-30T07:47:50.855Z" itemprop="datePublished">2021-11-30</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">图形界面连接教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU出租 2080Ti 免配环境 &nbsp;<a href="https://mistgpu.com" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>
