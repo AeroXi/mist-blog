@@ -74,7 +74,7 @@ uiux:
   # Muilt line slogan is supported.
   slogan: 
     - 分享深度学习知识
-    - <a href="https://mistgpu.cn">提供在线GPU出租</a>
+    - <a href="https://mistgpu.com">提供在线GPU出租</a>
   # For most link color except post color
   link_color:
   primary_color:
