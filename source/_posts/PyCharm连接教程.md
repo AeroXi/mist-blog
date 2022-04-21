@@ -39,7 +39,7 @@ PyCharm已有中文语言包，可在`PyCharm设置 - Plugins`中搜索并安装
 
 下一步中需要修改解释器的路径(绿色箭头处)
 
-- 若使用默认环境，**必须在此处最后加上3**，变成`/usr/bin/python3`。否则找不到预装的包。
+- 若使用默认环境，**必须在此处最后加上3**，变成`/usr/local/bin/python`。否则找不到预装的包。
 - 若使用conda虚拟环境，则需要替换为**实际解释器路径**。详见[conda教程](http://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/#%E5%9C%A8PyCharm%E4%B8%AD%E4%BD%BF%E7%94%A8conda%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8E%AF%E5%A2%83)
 
 {% asset_img pyc-7.png %}
