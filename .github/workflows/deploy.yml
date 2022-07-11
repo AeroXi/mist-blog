@@ -14,11 +14,10 @@ jobs:
         node -v
     - run: |
         free -h
-    - run: ls -lah
+    - run: git config --global --add safe.directory /github/workspace
     - uses: actions/checkout@v1
       with:
         submodules: true
-    - run: git config --global --add safe.directory /github/workspace
     # 下载 git submodule
     - uses: srt32/git-actions@v0.0.3
       with:
