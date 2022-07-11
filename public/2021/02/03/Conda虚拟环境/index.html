@@ -152,14 +152,14 @@
     <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="https://blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="conda创建虚拟环境 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/"><meta property="og:locale" content="zh-CN"><meta name="description" content="每台服务器创建时均已配好miniconda3的环境 找不到conda命令如在终端中输入conda后提示conda: command not found,则需要手动配置一下环境变量：export PATH&#x3D;$PATH:&#x2F;mistgpu&#x2F;miniconda3&#x2F;bin 创建虚拟环境在终端中输入conda create -n 环境名即可，环境名可任取。也可以在创建的时候指定所需要的包及对应版本(推荐)，  - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="miniconda, 博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda1.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda2.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda3.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda4.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda5.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda6.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda7.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda8.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda9.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda10.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda11.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda12.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda13.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda14.png"><meta property="article:published_time" content="2021-02-03T06:00:00.000Z"><meta property="article:modified_time" content="2021-10-03T03:48:58.983Z"><meta property="og:updated_time" content="2021-10-03T03:48:58.983Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="miniconda, 博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="conda创建虚拟环境 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/"><meta property="og:locale" content="zh-CN"><meta name="description" content="前言本教程中使用的mamba命令在cuda11.6及更新版镜像中可用，旧版镜像请手动替换为conda  mamba是conda的C++实现，速度更快。常用语法与conda并无区别  创建虚拟环境在终端中输入mamba create -n 环境名 -y即可，环境名可任取。 推荐在创建虚拟环境是顺带指定需要的python版本， 如mamba create -n 环境名 python&#x3D;3.8 -y。 之 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="miniconda, 博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda1.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda2.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda3.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda4.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda5.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda6.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/img.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda8.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda1.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda9.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda10.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda11.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda12.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda13.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda14.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda15.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda16.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda17.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda18.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda19.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda1.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda2.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda3.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda4.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda5.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda6.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda7.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda8.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda9.png"><meta property="og:image" content="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda10.png"><meta property="article:published_time" content="2021-02-03T06:00:00.000Z"><meta property="article:modified_time" content="2022-07-11T09:21:55.715Z"><meta property="og:updated_time" content="2022-07-11T09:21:55.715Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="miniconda, 博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
 
     
 
     <!-- ### Canonical link ### -->
     <link rel="canonical" href="https://blog.mistgpu.com/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">
 
-    <meta name="generator" content="Hexo 4.2.1">
+    <meta name="generator" content="Hexo 5.4.0">
 
     <!-- ### Analytics ### -->
     
@@ -193,7 +193,7 @@
     },
     
     "datePublished": "2021-02-03T06:00:00.000Z",
-    "dateModified": "2021-10-03T03:48:58.983Z",
+    "dateModified": "2022-07-11T09:21:55.715Z",
     "author": {
         "@type": "Person",
         "name": "Deep Mist Tech",
@@ -201,7 +201,7 @@
             "@type": "ImageObject",
             "url": "https://blog.mistgpu.com/img/medium.png"
         },
-        "description": "分享深度学习知识,<a href="https://mistgpu.com" target="_blank" rel="noopener">提供在线GPU出租</a>"
+        "description": "分享深度学习知识,<a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>"
     },
     "publisher": {
         "@type": "Organization",
@@ -219,7 +219,7 @@
     },
     
     "keywords": "miniconda, 博客,人工智能,深度学习,GPU",
-    "description": "每台服务器创建时均已配好miniconda3的环境 找不到conda命令如在终端中输入conda后提示conda: command not found,则需要手动配置一下环境变量：export PATH=$PATH:/mistgpu/miniconda3/bin 创建虚拟环境在终端中输入conda create -n 环境名即可，环境名可任取。也可以在创建的时候指定所需要的包及对应版本(推荐)，  - Deep Mist Tech - MistGPU博客"
+    "description": "前言本教程中使用的mamba命令在cuda11.6及更新版镜像中可用，旧版镜像请手动替换为conda  mamba是conda的C++实现，速度更快。常用语法与conda并无区别  创建虚拟环境在终端中输入mamba create -n 环境名 -y即可，环境名可任取。 推荐在创建虚拟环境是顺带指定需要的python版本， 如mamba create -n 环境名 python=3.8 -y。 之 - Deep Mist Tech - MistGPU博客"
 }
 </script>
 
@@ -240,7 +240,7 @@
     <p class="text-center header-slogan">
         
             
-                分享深度学习知识<br><a href="https://mistgpu.com" target="_blank" rel="noopener">提供在线GPU出租</a>
+                分享深度学习知识<br><a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>
             
         
     </p>
@@ -256,7 +256,7 @@
         <a href="/search.html" class="navbar-link">搜索</a>
     
     
-        <a href="https://mistgpu.com" target="_blank" rel="noopener" class="navbar-link">租用GPU</a>
+        <a target="_blank" rel="noopener" href="https://mistgpu.com" class="navbar-link">租用GPU</a>
     
     
         <div class="dropdown dropdown-right">
@@ -396,86 +396,173 @@
                     
                         
                         
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#找不到conda命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">找不到conda命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建虚拟环境"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建虚拟环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#激活环境"><span class="post-toc-number">3.</span> <span class="post-toc-text">激活环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装其他的包"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装其他的包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在Jupyter中使用conda创建的环境"><span class="post-toc-number">5.</span> <span class="post-toc-text">在Jupyter中使用conda创建的环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在PyCharm中使用conda创建的环境"><span class="post-toc-number">6.</span> <span class="post-toc-text">在PyCharm中使用conda创建的环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#降级cuda版本"><span class="post-toc-number">7.</span> <span class="post-toc-text">降级cuda版本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#例：安装旧版本PyTorch"><span class="post-toc-number">8.</span> <span class="post-toc-text">例：安装旧版本PyTorch</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常见问题"><span class="post-toc-number">9.</span> <span class="post-toc-text">常见问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境冲突-Found-Conflicts"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">环境冲突(Found Conflicts)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用自定义源时404或403报错"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">使用自定义源时404或403报错</span></a></li></ol></li></ol></div>
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建虚拟环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%BF%80%E6%B4%BB%E7%8E%AF%E5%A2%83"><span class="post-toc-number">3.</span> <span class="post-toc-text">激活环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E5%85%B6%E4%BB%96%E7%9A%84%E5%8C%85"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装其他的包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9C%A8Jupyter%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="post-toc-number">5.</span> <span class="post-toc-text">在Jupyter环境中使用虚拟环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9C%A8PyCharm%E4%B8%AD%E4%BD%BF%E7%94%A8conda%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="post-toc-number">6.</span> <span class="post-toc-text">在PyCharm中使用conda创建的环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%99%8D%E7%BA%A7cuda%E7%89%88%E6%9C%AC"><span class="post-toc-number">7.</span> <span class="post-toc-text">降级cuda版本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BE%8B%EF%BC%9A%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACPyTorch"><span class="post-toc-number">8.</span> <span class="post-toc-text">例：安装旧版本PyTorch</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BE%8B%EF%BC%9A%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACTensorFlow"><span class="post-toc-number">9.</span> <span class="post-toc-text">例：安装旧版本TensorFlow</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="post-toc-number">10.</span> <span class="post-toc-text">常见问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%BE%E4%B8%8D%E5%88%B0conda-command-not-found"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">找不到conda: command not found</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81-Found-Conflicts"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">环境冲突(Found Conflicts)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BA%90%E6%97%B6404%E6%88%96403%E6%8A%A5%E9%94%99"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">使用自定义源时404或403报错</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%99%8D%E7%BA%A7%E9%BB%98%E8%AE%A4%E7%8E%AF%E5%A2%83%E7%9A%84cuda-%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="post-toc-number">11.</span> <span class="post-toc-text">降级默认环境的cuda(不推荐)</span></a></li></ol></div>
                         
                     
                     <article id="post-content">
-                        <p>每台服务器创建时均已配好miniconda3的环境</p>
-<h1 id="找不到conda命令"><a href="#找不到conda命令" class="headerlink" title="找不到conda命令"></a>找不到conda命令</h1><p>如在终端中输入<code>conda</code>后提示<code>conda: command not found</code>,<br>则需要手动配置一下环境变量：<code>export PATH=$PATH:/mistgpu/miniconda3/bin</code></p>
-<h1 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h1><p>在终端中输入<code>conda create -n 环境名</code>即可，环境名可任取。也可以在创建的时候指定所需要的包及对应版本(推荐)，</p>
-<p>如<code>conda create -n 环境名 python=3.8 ipykernel pandas matplotlib ... -y</code>。</p>
-<p>之后等待conda下载完即可，下载完成时会有下图提示：</p>
+                        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程中使用的<code>mamba</code>命令在cuda11.6及更新版镜像中可用，旧版镜像请手动替换为<code>conda</code></p>
+<blockquote>
+<p><code>mamba</code>是<code>conda</code>的C++实现，速度更快。常用语法与<code>conda</code>并无区别</p>
+</blockquote>
+<h1 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h1><p>在终端中输入<code>mamba create -n 环境名 -y</code>即可，环境名可任取。</p>
+<p>推荐在创建虚拟环境是顺带指定需要的python版本，</p>
+<p>如<code>mamba create -n 环境名 python=3.8 -y</code>。</p>
+<p>之后等待下载即可，下载完成时会有下图提示：</p>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda1.png" class="">
 
-<h1 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h1><p>创建完成后的环境需要激活才可生效，使用<code>conda activate 环境名</code>即可激活。激活成功后在终端提示符上边会出现<code>(环境名)</code>。<br>同时可以用以下命令检查python版本及路径(路径应当在<code>Miniconda</code>目录中，而不是默认的<code>/usr/bin</code>)。</p>
+<h1 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h1><p>创建完成后的环境需要激活才可生效，使用<code>mamba activate 环境名</code>即可。激活成功后在终端提示符上边会出现<code>(环境名)</code>的提示。<br>同时可以用以下命令检查python版本及路径(路径应当在<code>miniconda</code>目录中，而不是自带的<code>/usr/local/bin</code>)。</p>
 <ul>
 <li><code>python -V</code></li>
 <li><code>which python</code></li>
 </ul>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda2.png" class="">
 
-
 <h1 id="安装其他的包"><a href="#安装其他的包" class="headerlink" title="安装其他的包"></a>安装其他的包</h1><p>虚拟环境创建后不会继承默认环境里的包，意味着程序所需的包都需要在虚拟环境中<strong>重新安装</strong>。</p>
-<p>若在创建时没有一次性装完，可以继续在终端中输入<code>conda install 包名 -y</code>安装剩余的包</p>
-<p>注：为了确保不同包的版本之间能互相兼容，在conda环境中请尽量在一条命令内安装好所有的包，并尽量不要使用pip安装。</p>
-<h1 id="在Jupyter中使用conda创建的环境"><a href="#在Jupyter中使用conda创建的环境" class="headerlink" title="在Jupyter中使用conda创建的环境"></a>在Jupyter中使用conda创建的环境</h1><p>默认情况下，服务器附加功能里的Jupyter使用的是默认的pip环境。 若要想在Jupyter中使用conda创建的虚拟环境，需要如下配置：</p>
-<ol>
-<li>使用<code>conda activate 环境名</code>激活环境</li>
-<li>在虚拟环境内输入: <code>conda install ipykernel ipython_genutils -y</code></li>
-<li>将ipykernel安装到默认环境中(不需要退出虚拟环境):<br><code>python -m ipykernel install --user --name mistvenv --display-name &quot;虚拟环境&quot;</code><br>(此命令中<code>--name</code>后的名称要和之前的环境名一致，<code>--display-name</code>后的名称可自定义)</li>
+<p>继续在终端中输入<code>mamba install 包名 -y</code>安装即可</p>
+<blockquote>
+<p>为确保包之间的兼容性，推荐用<code>mamba</code>而不是<code>pip</code>来安装</p>
+</blockquote>
+<h1 id="在Jupyter环境中使用虚拟环境"><a href="#在Jupyter环境中使用虚拟环境" class="headerlink" title="在Jupyter环境中使用虚拟环境"></a>在Jupyter环境中使用虚拟环境</h1><ol>
+<li>使用<code>mamba activate 环境名</code>激活环境</li>
+<li>在虚拟环境内输入: <code>mamba install ipykernel ipython_genutils -y</code></li>
+<li>执行 <code>python -m ipykernel install --user --name 虚拟环境名 --display-name &quot;显示名称&quot;</code></li>
 </ol>
+<blockquote>
+<p>此命令中<code>--name</code>后的名称要和之前的环境名一致，<code>--display-name</code>后的名称可任取。</p>
+</blockquote>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda3.png" class="">
 
 <ol start="4">
-<li>重新打开Jupyter，点击左上角蓝色+号新建启动器即可看到虚拟环境了。<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda4.png" class="">
+<li><p>刷新Jupyter网页，之后点击左上角蓝色+号新建启动器即可看到虚拟环境了。</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda4.png" class="">
 
 </li>
 </ol>
-<p>已有的ipynb文件可以通过点击右上角的python切换环境。</p>
+<p>已有的ipynb文件可以点击右上角或<code>菜单栏-内核-更改内核</code>修改。</p>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda5.png" class="">
 
 <h1 id="在PyCharm中使用conda创建的环境"><a href="#在PyCharm中使用conda创建的环境" class="headerlink" title="在PyCharm中使用conda创建的环境"></a>在PyCharm中使用conda创建的环境</h1><p>PyCharm具体配置教程可参考<a href="http://blog.mistgpu.com/2021/02/01/PyCharm%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/#%E6%B7%BB%E5%8A%A0SSH%E8%A7%A3%E9%87%8A%E5%99%A8">http://blog.mistgpu.com/2021/02/01/PyCharm连接教程/#添加SSH解释器)</a></p>
 <ol>
-<li>使用<code>conda activate 环境名</code>激活环境</li>
-<li>在虚拟环境内输入: <code>which python</code>，复制返回的路径名。</li>
+<li>使用<code>mamba activate 环境名</code>激活环境</li>
+<li>在虚拟环境内输入: <code>which python</code>，复制返回的路径。</li>
 </ol>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda6.png" class="">
 
 <ol start="3">
-<li>将返回的路径名(上图红框)填入SSH解释器中在<code>解释器</code>一栏(蓝框)</li>
+<li>将返回的路径填入SSH解释器中在<code>解释器</code>一栏(下图蓝框)</li>
 </ol>
-<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda7.png" class="">
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/img.png" class="">
 
-<h1 id="降级cuda版本"><a href="#降级cuda版本" class="headerlink" title="降级cuda版本"></a>降级cuda版本</h1><p>在conda中可以通过安装<code>cudatoolkit</code>来切换cuda版本。<br>注：<strong>RTX30系、A5000、A6000、A100等安培架构机型不支持降级到cuda11以下。</strong></p>
-<p>通过<code>conda search cudatoolkit</code>可以看到可安装的版本，使用<code>conda install cudatoolkit=版本号 -y</code>安装。</p>
+<h1 id="降级cuda版本"><a href="#降级cuda版本" class="headerlink" title="降级cuda版本"></a>降级cuda版本</h1><p>在虚拟环境中可以通过安装不同版本的<code>cudatoolkit</code>来切换环境内的cuda版本。</p>
+<p>注：<strong>RTX30系、A5000、A6000、A100等安培架构机型不支持降级到cuda11以下。</strong></p>
+<p>通过<code>mamba search cudatoolkit</code>可以看到可安装的版本。使用<code>mamba install cudatoolkit=版本号 -y</code>即可安装。</p>
+<blockquote>
+<p>如果需要安装PyTorch或TensorFlow可跟随后面的教程一并安装，不需要现在装</p>
+</blockquote>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda8.png" class="">
 
-<p>虚拟环境内安装的<code>cudatoolkit</code>的版本就对应了<code>cuda</code>的版本，使用<code>conda list</code>确认此包已安装即可使用。</p>
+<p>虚拟环境内安装的<code>cudatoolkit</code>的版本就对应了<code>cuda</code>的版本，激活环境后输入<code>mamba list</code>确认此包已安装即可使用。</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda1.png" class="">
+
 <ul>
 <li><em>使用<code>nvidia-smi</code>命令查询的cuda版本为驱动最高支持的cuda版本，不代表环境的cuda版本。</em></li>
 <li><em>使用<code>nvcc -V</code>命令查询到的cuda版本为默认pip环境的cuda版本，不是虚拟环境内的版本。</em></li>
 </ul>
-<h1 id="例：安装旧版本PyTorch"><a href="#例：安装旧版本PyTorch" class="headerlink" title="例：安装旧版本PyTorch"></a>例：安装旧版本PyTorch</h1><p>在<a href="https://pytorch.org/get-started/previous-versions/" target="_blank" rel="noopener">PyTorch官方网站</a>找到对应PyTorch版本-Linux-conda部分的命令，并选择所需<code>CUDA</code>版本。</p>
+<h1 id="例：安装旧版本PyTorch"><a href="#例：安装旧版本PyTorch" class="headerlink" title="例：安装旧版本PyTorch"></a>例：安装旧版本PyTorch</h1><p>在<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">PyTorch官方网站</a>找到对应PyTorch版本-Linux-conda部分的命令，并选择所需<code>CUDA</code>版本。</p>
+<p>教程以安装<code>PyTorch11.1</code>, <code>cuda=11.3</code>为例：</p>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda9.png" class="">
-<p>本例以安装1.7.1版本的PyTorch，10.2版本的cuda为例。</p>
-<p>激活环境后粘贴命令即可。需要下载的包比较大，请耐心等待。</p>
+
+<p>激活环境后 (<em>可选, 将命令开头的<code>conda</code>替换成<code>mamba</code></em>) 粘贴命令执行即可。</p>
+<blockquote>
+<p>如果不需要<code>torchvision</code>和<code>torchaudio</code>可以从命令中去掉。</p>
+</blockquote>
+<blockquote>
+<p>此步骤需要下载的包比较大，请耐心等待。</p>
+</blockquote>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda10.png" class="">
 
-<p>安装完成后确认PyTorch版本为<code>1.7.1</code>，cuda版本为<code>10.2</code>，cudnn版本为<code>7.6.5</code>，GPU可用。</p>
+<p>安装完成后可确认PyTorch版本为<code>1.11.0</code>，GPU可用，cuda版本为<code>11.3</code>，cudnn版本为<code>8.2.0</code>。</p>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda11.png" class="">
 
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="环境冲突-Found-Conflicts"><a href="#环境冲突-Found-Conflicts" class="headerlink" title="环境冲突(Found Conflicts)"></a>环境冲突(Found Conflicts)</h2><p>遇到冲突时一般会有类似下图的提示，若环境内装了很多包的话会卡在红框处。此时可以<code>Ctrl-c</code>直接取消，也可在等待完成后查看具体哪些包直接有冲突。</p>
+<h1 id="例：安装旧版本TensorFlow"><a href="#例：安装旧版本TensorFlow" class="headerlink" title="例：安装旧版本TensorFlow"></a>例：安装旧版本TensorFlow</h1><p>在<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#gpu">TensorFlow官网</a>确认需要安装的版本所需的<code>cuDNN</code>及<code>CUDA</code>版本</p>
+<p>教程以安装<code>tensorflow=2.6.0</code>为例：</p>
 <img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda12.png" class="">
+
+<p>激活环境后执行 <code>mamba install -c conda-forge cudatoolkit=&#123;CUDA版本&#125; cudnn=&#123;cuDNN版本&#125; -y</code></p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda13.png" class="">
+
+<p>粘贴执行下面两条命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $CONDA_PREFIX/etc/conda/activate.d</span><br><span class="line">echo &#x27;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/&#x27; &gt; $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda14.png" class="">
+
+<p>通过pip安装TensorFlow</p>
+<p><code>pip install --upgrade pip</code></p>
+<p><code>pip install tensorflow==&#123;tf版本&#125;</code></p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda15.png" class="">
+
+<p>安装完成后可确认TensorFlow版本为<code>2.6.0</code>，GPU可用</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda16.png" class="">
+
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="找不到conda-command-not-found"><a href="#找不到conda-command-not-found" class="headerlink" title="找不到conda: command not found"></a>找不到<code>conda</code>: <code>command not found</code></h2><p>在终端中手动执行 <code>export PATH=$PATH:/mistgpu/miniconda/bin</code>，之后执行<code>conda init --all</code>后重启终端</p>
+<h2 id="环境冲突-Found-Conflicts"><a href="#环境冲突-Found-Conflicts" class="headerlink" title="环境冲突(Found Conflicts)"></a>环境冲突(Found Conflicts)</h2><p>遇到冲突时一般会有类似下图的提示，若环境内装了很多包的话会卡在红框处。</p>
+<p>此时可以<code>Ctrl-c</code>直接取消，也可在等待完成后查看具体哪些包直接有冲突。</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda17.png" class="">
+
 <p>解决方案包括但不限于：</p>
 <ul>
 <li>重新创建虚拟环境，并将所有要用到的包放在一条命令内安装</li>
 <li>放宽各个包版本要求</li>
 </ul>
 <h2 id="使用自定义源时404或403报错"><a href="#使用自定义源时404或403报错" class="headerlink" title="使用自定义源时404或403报错"></a>使用自定义源时404或403报错</h2><p>为了加快conda的下载速度，我们在环境中修改了默认镜像源。这可能导致使用其他自定义源时报错。</p>
-<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda13.png" class="">
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda18.png" class="">
+
 <p>您可以在终端中使用<code>rm ~/.condarc</code>命令删除自定义配置后重试。</p>
-<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda14.png" class="">
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/conda19.png" class="">
+
 <p><em>删除<code>.condarc</code>后将使用默认源下载包，速度会比使用镜像更慢。</em></p>
+<h1 id="降级默认环境的cuda-不推荐"><a href="#降级默认环境的cuda-不推荐" class="headerlink" title="降级默认环境的cuda(不推荐)"></a>降级默认环境的cuda(不推荐)</h1><blockquote>
+<p>一般情况下不需要使用，如果虚拟环境里降级有问题必须降默认环境的cuda才考虑</p>
+</blockquote>
+<blockquote>
+<p>搞砸了的话需要重新创建服务器</p>
+</blockquote>
+<p>到<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">nvidia官网</a>并选择对应<code>CUDA</code>版本</p>
+<p>教程以<code>cuda 11.3.1</code>为例，按下图所示依次选择<code>Linux - x86_64 - Ubuntu - 1804 - runfile(local)</code></p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda1.png" class="">
+
+<p>粘贴到服务器终端中执行</p>
+<blockquote>
+<p>若下载速度慢，可以在自己电脑中下载后上传到机器中</p>
+</blockquote>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda2.png" class="">
+
+<p><del>阅读完EULA后</del>根据提示输入<code>accept</code>后回车</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda3.png" class="">
+
+<p>根据提示把<code>Driver</code>去掉(上下键移动高亮到此处后按空格)后，移动到<code>Install</code>回车</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda4.png" class="">
+
+<p>下一个提示也回车，之后耐心等待退出即可</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda5.png" class="">
+
+<p>安装完成后会提示修改环境变量，需要添加以下两行到<code>~/.zshrc</code>末尾</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:&#123;$PATH&#125;</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&#123;$LD_LIBRARY_PATH&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>推荐使用nano, <code>nano ~/.zshrc</code>，编辑后按<code>ctrl-x</code>，<code>y</code>，<code>回车</code></p>
+</blockquote>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda6.png" class="">
+
+<p>完成后可输入<code>nvcc -V</code>确认版本</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda7.png" class="">
+
+<p>之后还需要在默认环境中卸载原来的PyTorch/Tensorflow并安装新的版本</p>
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda8.png" class="">
+
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda9.png" class=""> 
+
+<img src="/2021/02/03/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/cuda10.png" class=""> 
 
                     </article>
                     
@@ -484,7 +571,7 @@
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
     (function() {
-        var dateUpdate = Date.parse("2021-10-03");
+        var dateUpdate = Date.parse("2022-07-11");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -500,7 +587,7 @@
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2021-02-03T06:00:00.000Z" itemprop="datePublished">2021-02-03</time>
 
-    , 最后修改于&nbsp;<time datetime="2021-10-03T03:48:58.983Z" itemprop="dateModified">2021-10-03</time>
+    , 最后修改于&nbsp;<time datetime="2022-07-11T09:21:55.715Z" itemprop="dateModified">2022-07-11</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
@@ -614,7 +701,7 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a href="https://mistgpu.com" target="_blank" rel="noopener" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a target="_blank" rel="noopener" href="https://mistgpu.com" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
     </body>
 
 </html>
