@@ -6,31 +6,40 @@ tags:
 
 [TensorBoard官方文档](https://github.com/tensorflow/tensorboard)
 
-## 概述
+# 服务器端
 
-TensorBoard是Tensorflow的可视化工具，它通过对Tensoflow程序运行过程中输出的日志文件进行可视化Tensorflow程序的运行状态。本文将介绍如何在服务器中启动TensorBoard，并从本地访问。
+在控制台的**附加功能**中点击使用帮助，复制`IP`及`开放端口`。
 
-## 服务器端
+{% asset_img help.png %}
 
-首先从[**控制台**](https://mistgpu.com/user/)中**附加功能**一栏的**使用帮助**中获取服务器地址。
+{% asset_img tb1.png %}
 
-{% asset_img TB-1.png %}
+接下来进入到服务器命令行中，输入
+```text
+tensorboard --host 0.0.0.0 --port {开放端口} --logdir {日志文件目录}
+```
 
-在服务器信息一栏中可找到`主机名IP`和`开放端口`
-
-{% asset_img TB-4.png %}
-
-接下来进入到命令行中，输入`tensorboard --host 0.0.0.0 --port 开放端口 --logdir 日志文件目录`
-
-例如这里开放端口是`30324`，则输入`tensorboard --host 0.0.0.0 --port 30324 --logdir /tmp`。
+本例的开放端口是`12605`，日志文件在`log/fit/`下，
+则输入 `tensorboard --host 0.0.0.0 --port 30324 --logdir log/fit`
 
 若有如下输出则表示成功启动：
-{% asset_img TB-2.png %}
 
-## 本地端
+{% asset_img tb2.png %}
 
-打开浏览器，在地址栏中输入```主机名:开放端口```，
-如```gpu82.mistgpu.xyz:30324```。
+# 本地端
+
+打开本地浏览器，在地址栏中输入
+```text
+主机名:开放端口
+```
+
+如本例输入 `gpu294.mistgpu.com:12605`
 
 成功访问：
-{% asset_img TB-3.png %}
+{% asset_img tb3.png %}
+
+# 日志文件目录
+
+Tensorboard日志文件一般在代码中有设置，如果不确定的话可以找哪些文件夹下有`events.out.tfevents`文件
+
+{% asset_img tb4.png %}

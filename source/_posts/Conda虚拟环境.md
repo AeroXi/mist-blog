@@ -83,7 +83,7 @@ PyCharm具体配置教程可参考[http://blog.mistgpu.com/2021/02/01/PyCharm连
 
 虚拟环境内安装的`cudatoolkit`的版本就对应了`cuda`的版本，激活环境后输入`mamba list`确认此包已安装即可使用。
 
-{% asset_img cuda1.png %}
+{% asset_img cuda.png %}
 
 - *使用`nvidia-smi`命令查询的cuda版本为驱动最高支持的cuda版本，不代表环境的cuda版本。*
 - *使用`nvcc -V`命令查询到的cuda版本为默认pip环境的cuda版本，不是虚拟环境内的版本。*

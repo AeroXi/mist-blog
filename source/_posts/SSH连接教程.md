@@ -3,63 +3,117 @@ title: SSH连接教程
 date: 2021-02-03 18:00:00
 tags: ssh
 ---
+
 # 概述
+
 通过SSH连接可以进入到服务器执行各种操作，将会涉及到Linux命令，如不熟悉Linux命令请谨慎操作。
 
-{% asset_img 0.png %}
+{% asset_img ssh0.png %}
+
 在开始前请参考[常见问题](https://www.mistgpu.com/faq/)。
-短时间执行的命令可以直接执行，但需要长时间的任务请务必使用`screen`或其他方法挂到后台运行。
+需要长时间运行的任务请**务必**使用`screen`或其他方法挂到后台运行。
+
 # 网页终端
+
 ## Jupyter
-在服务器开机的状态下点击附加功能中的Jupyter即可进入。在Launcher启动页点Terminal即可。
-{% asset_img 1.png %}
-{% asset_img 2.png %}
+
+在服务器开机的状态下可直接点击`进入环境`打开Jupyter。
+
+{% asset_img ssh1.png %}
+
+点击`文件 - 新建 - 终端`或直接在启动页点击`终端`即可。
+
+> 注意是黑色的终端`Terminal`而不是蓝色的控制台`Console`。
+
+{% asset_img jupyter1.png %}
+
 Launcher可点击左上角篮筐中的加号启动。
+
 ## 网页命令行
+
 点击附加功能的命令行即可。
+
+{% asset_img ssh2.png %}
+
 # 本地终端
-## 通用步骤
-在[控制台](https://www.mistgpu.com/user/)可以复制SSH命令，直接粘贴到命令行中即可连接。
-{% asset_img 3.png %}
-{% asset_img 4.png %}
+
+## Win10/Win11, macOS, Linux
+
+在[控制台](https://www.mistgpu.com/user/)复制SSH命令，直接粘贴到命令行中即可连接。
+
+{% asset_img ssh4.png %}
+
 上图中蓝色部分为输入的内容，从上到下依次为：
+
 - 粘贴ssh命令
 - 第一次连接需要接收服务器指纹，输入`yes`即可
 - 输入密码，密码为**创建服务器**时设置的，输入过程中**不会显示**在屏幕上，输完回车即可
-出现类似红色框中的提示则表示连接成功。(带有MistGPU字样)
-## Windows 10系统
-Win10系统已自带`ssh`，`scp`等命令，在命令行或Powershell中都可直接使用。
+
+看到`mist @ MistGPU`的提示即表示连接成功
+
+{% asset_img ssh5.png %}
+
+## Win10/Win11
+
+在开始菜单中搜索`cmd`或`powershell`
+
+{% asset_img cmd.png %}
+{% asset_img powershell.png %}
+
 ## macOS
+
 按下`Command + 空格键`，在Spotlight中输入`终端`即可打开终端。
+
 ## Linux
+
 在应用程序中找到终端即可。Ubuntu系统可用`Ctrl-alt-t`快捷键启动。
 
 ---
+
 ## Win10以下或SSH命令不可用
 
-**以下几种方法的主机名(Host)和端口均可在服务器的`附加功能-使用帮助`中看到。**
+> 以下几种方法的主机名(Host)和端口均可在服务器的 `附加功能-使用帮助` 中查询。
 
 ### PuTTY
+
 从[PuTTY官网](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)下载PuTTY安装即可，可选择msi安装包一键安装，也可只下载PuTTY程序本身直接运行。
-{% asset_img 5.png %}
+{% asset_img putty0.png %}
 
 打开程序后填入`主机名`和`SSH端口`即可。
 
-{% asset_img 6.png %}
+{% asset_img putty1.png %}
 
-本例中在`主机名`中填入`mist@gpu193.mistgpu.xyz`，`端口`中填入`20500`。请以实际为准。
-完成后点击Open即可连接了。同理第一次连接时要点`Yes`按钮，之后输入**创建服务器时**设置的密码。
+本例中在`主机名`中填入`gpu294.mistgpu.com`，`端口`中填入`12601`。请以实际为准。
+
+完成后点击Open即可连接了。同理第一次连接时要点`Accept`接受指纹。
+
+{% asset_img putty2.png %}
+
+之后分别输入用户名`mist`以及**创建服务器时**设置的密码。
+
+> 输入密码过程中 输入的字符**不会显示**在屏幕上，输完回车即可
+ 
+{% asset_img putty3.png %}
+
 ### MobaXterm
-从[MobaXterm官网](https://mobaxterm.mobatek.net/download-home-edition.html)下载安装即可。在下载页左边蓝色的Portable为便携版，可直接双击运行，右边绿色的Installer为安装版。
+
+从[MobaXterm官网](https://mobaxterm.mobatek.net/download-home-edition.html)
+下载安装即可。在下载页左边蓝色的Portable为便携版，可直接双击运行，右边绿色的Installer为安装版。
+
 #### 方法一：
-设置本地的终端为MobaXterm自带的Bash，然后在主页新建本地终端，粘贴ssh命令即可。
-{% asset_img 7.png %}
-{% asset_img 7-1.png %}
+
+打开软件后点击`Start local termial`，然后直接粘贴ssh命令即可
+
+{% asset_img moba1.png %}
+
 #### 方法二：
-新建SSH会话，填入主机名和ssh端口后即可连接。
-{% asset_img 8.png %}
+
+点击 `Session - SSH` ，填入`IP`和`端口`即可。
+
 ### XShell
-该[下载链接](https://www.netsarang.com/zh/free-for-home-school/)获取该软件的家庭和学校用户免费版本（建议在获取下载链接的时候选中“两者”，即下载Xshell和Xftp，前者是操作服务器的命令行窗口，后者是专门用于文件传输的），后安装打开。
+
+该[下载链接](https://www.netsarang.com/zh/free-for-home-school/)
+获取该软件的家庭和学校用户免费版本（建议在获取下载链接的时候选中“两者”，即下载Xshell和Xftp，前者是操作服务器的命令行窗口，后者是专门用于文件传输的），后安装打开。
 {% asset_img xs0.png %}
 点击如上图所示的图标来新建会话，在弹出来的设定窗口中，名称可任意填写，协议选择SSH。
 
@@ -73,8 +127,11 @@ Win10系统已自带`ssh`，`scp`等命令，在命令行或Powershell中都可�
 在接下来的窗口（如上图所示）中输入创建服务器时的密码，并勾选“记住密码”后点击确定可成功连接。
 
 ---
+
 # 常用操作
+
 连接好进入命令行终端后便可开始操作了，常用的操作命令包括
+
 - `ls -l` 查看当前目录下的文件; `ls -l /data` 查看云存储中的文件
 - `cd 目录名` 进入到指定目录; `cd ../` 返回到上一级目录; `cd ~/`返回到主目录
 - `pwd` 查看当前目录的绝对路径
@@ -86,5 +143,6 @@ Win10系统已自带`ssh`，`scp`等命令，在命令行或Powershell中都可�
 - `zip -r9 保存后文件名.zip 要压缩的目录名` 将`目录`下的所有文件压缩成`文件`
 
 # 注意事项
+
 - 所有命令均需要以英文半角状态输入，请特别留意不要漏掉命令中的空格，否则会报错。
 - 长时间运行的任务请务必挂到后台运行，详情请见[常见问题](https://mistgpu.com/faq)
