@@ -9,6 +9,10 @@ tags: PyCharm
 
 [官网学生认证可免费获得专业版链接](https://www.jetbrains.com/zh-cn/community/education/#students)
 
+# 特别说明
+
+PyCharm是调试代码的工具，若代码需要长时间运行，请参考[SSH连接教程](http://blog.mistgpu.com/2021/02/03/SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/)，在服务器终端中使用`screen`将代码挂到后台运行。
+
 ***
 # 安装中文包
 PyCharm已有中文语言包，可在`PyCharm设置 - Plugins`中搜索并安装，随后重启PyCharm即可生效。
