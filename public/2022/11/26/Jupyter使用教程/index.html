@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Jupyter使用教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="https://blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Jupyter使用教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="概述Jupyter Lab中集成开发环境，可以用户编写代码、运行notebook(*.ipynb文件)、操作服务器终端，以及上传&#x2F;下载文件等功能。 在控制台开机后点击左下角的“进入环境”按钮即可进入服务器的Jupyter环境。 界面介绍打开Jupyter后界面如下图所示，启动页可以点击左上角蓝色底的加号图标弹出。   浏览&#x2F;下载文件在Jupyter左侧文件管理器中可以看到服务器中的文件。可双击打开 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter4.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter5.gif"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter3.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter6.png"><meta property="article:published_time" content="2022-11-26T04:00:00.000Z"><meta property="article:modified_time" content="2022-11-27T12:29:14.779Z"><meta property="og:updated_time" content="2022-11-27T12:29:14.779Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "Jupyter使用教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2022-11-26T04:00:00.000Z",
+    "dateModified": "2022-11-27T12:29:14.779Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "概述Jupyter Lab中集成开发环境，可以用户编写代码、运行notebook(*.ipynb文件)、操作服务器终端，以及上传/下载文件等功能。 在控制台开机后点击左下角的“进入环境”按钮即可进入服务器的Jupyter环境。 界面介绍打开Jupyter后界面如下图所示，启动页可以点击左上角蓝色底的加号图标弹出。   浏览/下载文件在Jupyter左侧文件管理器中可以看到服务器中的文件。可双击打开 - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://mistgpu.com" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=https://blog.mistgpu.com&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=Jupyter使用教程&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.mistgpu.com&text=Jupyter使用教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMklEQVR42u2a23bDMAgE8/8/3b62bsQOcnqaivFLro5GOQYvC4+Pf3A8hBRSSCHfAPJRHN9OuLz+8YOLc1bnkXWFnAu5+pEK5Otj2tT1HLqukLMhr4utYKogIUGUNimkkAQyJep0E3j2uZBC3g2c1XvPgidBCSkkgUwLrr6fknZK5i9RQUIeB1kVRL/5+LJqUcijIKNpFBarxAQ1Cm67akIeBVldyFQ4pPNo4AgpZBIFqSBbiY20ODEYhJwLSZN1EgZERJNCL1aLQh4PeVeoVol7y8wXUsjVRdswDaobwWpDxKwVciYkFQNVUk4gJEhahpWQx0N2gogUWrvDIa1BESGPhiRJnIrYqmhLwSWkkB0hukrgHQM2FXpCCplu8sSgoqZqEhPIsBJyBGSnuUSNgZ0BpmhYCTkGspOgyQAxMQpWBkEsxIQcA7kzuJ4aACThx0aXkCMhiRlAm+2VUdoRGkIKuXOhk++SBn/5Bwg5EnJnaIkK344ALgNHyHGQtImUNlAF4uq9cnBEyPGQ3eKp2iBN7KUJK+RoyJ3AIGZpEtCl+BZyNGRaKDbQG2Y+LcqEFJJe3GloiQ6HtAoxIcdAkoEQIo7TRlNh1mqACnk0JL2YyfBwEsC0wSqkkLTZSQY9OhutijshhSQFPi2yEmQaehJSSJKEUzFPDStqggkpJDVC6YBTxzRdBpuQoyGJeEjPq02kPwM5GEKOgUw3/mS4dhI+aVoJORvynQ8hhRRSyD88PgEeyzUzSj3tNwAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Jupyter使用教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2022-11-26</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Jupyter使用教程&url=https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.mistgpu.com/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMklEQVR42u2a23bDMAgE8/8/3b62bsQOcnqaivFLro5GOQYvC4+Pf3A8hBRSSCHfAPJRHN9OuLz+8YOLc1bnkXWFnAu5+pEK5Otj2tT1HLqukLMhr4utYKogIUGUNimkkAQyJep0E3j2uZBC3g2c1XvPgidBCSkkgUwLrr6fknZK5i9RQUIeB1kVRL/5+LJqUcijIKNpFBarxAQ1Cm67akIeBVldyFQ4pPNo4AgpZBIFqSBbiY20ODEYhJwLSZN1EgZERJNCL1aLQh4PeVeoVol7y8wXUsjVRdswDaobwWpDxKwVciYkFQNVUk4gJEhahpWQx0N2gogUWrvDIa1BESGPhiRJnIrYqmhLwSWkkB0hukrgHQM2FXpCCplu8sSgoqZqEhPIsBJyBGSnuUSNgZ0BpmhYCTkGspOgyQAxMQpWBkEsxIQcA7kzuJ4aACThx0aXkCMhiRlAm+2VUdoRGkIKuXOhk++SBn/5Bwg5EnJnaIkK344ALgNHyHGQtImUNlAF4uq9cnBEyPGQ3eKp2iBN7KUJK+RoyJ3AIGZpEtCl+BZyNGRaKDbQG2Y+LcqEFJJe3GloiQ6HtAoxIcdAkoEQIo7TRlNh1mqACnk0JL2YyfBwEsC0wSqkkLTZSQY9OhutijshhSQFPi2yEmQaehJSSJKEUzFPDStqggkpJDVC6YBTxzRdBpuQoyGJeEjPq02kPwM5GEKOgUw3/mS4dhI+aVoJORvynQ8hhRRSyD88PgEeyzUzSj3tNwAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="post-toc-number">2.</span> <span class="post-toc-text">界面介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B5%8F%E8%A7%88-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="post-toc-number">3.</span> <span class="post-toc-text">浏览&#x2F;下载文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Notebook-%E6%96%87%E4%BB%B6"><span class="post-toc-number">4.</span> <span class="post-toc-text">Notebook 文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Python-%E6%96%87%E4%BB%B6"><span class="post-toc-number">5.</span> <span class="post-toc-text">Python 文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF"><span class="post-toc-number">6.</span> <span class="post-toc-text">服务器终端</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Jupyter Lab中集成开发环境，可以用户编写代码、运行notebook(*.ipynb文件)、操作服务器终端，以及上传/下载文件等功能。</p>
+<p>在控制台开机后点击左下角的“进入环境”按钮即可进入服务器的Jupyter环境。</p>
+<h1 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h1><p>打开Jupyter后界面如下图所示，启动页可以点击左上角蓝色底的加号图标弹出。</p>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter1.png" class="">
+
+<h1 id="浏览-下载文件"><a href="#浏览-下载文件" class="headerlink" title="浏览/下载文件"></a>浏览/下载文件</h1><p>在Jupyter左侧文件管理器中可以看到服务器中的文件。可双击打开文件，或右键下载。</p>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter4.png" class="">
+
+<blockquote>
+<p>由于Jupyter底层冲突，名为<code>checkpoints</code>的文件夹无法打开/删除。请手动重命名为其他名称(如<code>checkpoint</code>)或到服务器终端中访问</p>
+</blockquote>
+<p>在文件管理器中进入项目目录后，通过启动页启动服务器终端时会自动将终端的当前路径设置为此目录。</p>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter5.gif" class="">
+
+<p>在终端中输入<code>pwd</code>命令即可看到此目录的绝对路径，其他终端操作请参考<a href="http://blog.mistgpu.com/2022/11/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C">终端使用教程</a>。</p>
+<h1 id="Notebook-文件"><a href="#Notebook-文件" class="headerlink" title="Notebook 文件"></a>Notebook 文件</h1><p><code>*.ipynb</code>文件在Jupyter中可直接运行</p>
+<blockquote>
+<p>注意notebook中执行的是Python代码而不是Linux终端代码</p>
+</blockquote>
+<blockquote>
+<p>简要Linux命令可以在命令头加英文感叹号执行，比如<code>nvidia-smi</code></p>
+</blockquote>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter2.png" class="">
+
+<p>一般不太建议在notebook中长时间执行程序，因为当单元格内输出变多后Jupyter本身速度会变慢，且刷新页面后实时输出可能不会保存。<br>若需要长时间运行，请点击菜单栏<code>文件</code>-<code>将notebook另存为</code>，将拓展名改为<code>.py</code>后到服务器终端运行。</p>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter3.png" class="">
+
+<h1 id="Python-文件"><a href="#Python-文件" class="headerlink" title="Python 文件"></a>Python 文件</h1><p><code>*.py</code>文件在Jupyter中只可编辑，不可直接运行。如需运行<code>.py</code>文件请使用服务器终端执行。具体请参考<a href="http://blog.mistgpu.com/2022/11/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#%E8%BF%90%E8%A1%8Cpy%E4%BB%A3%E7%A0%81">终端使用教程</a></p>
+<h1 id="服务器终端"><a href="#服务器终端" class="headerlink" title="服务器终端"></a>服务器终端</h1><p>在启动页点击黑色的终端，或在<code>文件</code>-<code>新建</code>中选择终端。</p>
+<blockquote>
+<p>注意是黑色的终端<code>Terminal</code>，而不是蓝色的<code>Console</code></p>
+</blockquote>
+<img src="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jupyter6.png" class="">
+
+<p>在Jupyter终端内，<strong>选中文本</strong>后<code>Ctrl-c</code>可复制，<code>Ctrl-v</code>可粘贴。</p>
+<blockquote>
+<p>不选中文本按<code>Ctrl-c</code>会中断正在操作的命令</p>
+</blockquote>
+<p>具体终端操作命令请移步<a href="http://blog.mistgpu.com/2022/11/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C">终端使用教程</a>。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2022-11-27");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-11-26T04:00:00.000Z" itemprop="datePublished">2022-11-26</time>
+
+    , 最后修改于&nbsp;<time datetime="2022-11-27T12:29:14.779Z" itemprop="dateModified">2022-11-27</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">服务器终端使用教程</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">SSH连接教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a target="_blank" rel="noopener" href="https://mistgpu.com" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>

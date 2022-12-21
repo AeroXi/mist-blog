@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Pycharm配置教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="https://blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Pycharm配置教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="前言本教程基于PyCharm 2022.2 Professional专业版，Community社区版不支持连接到远程服务器，故无法使用。 官网学生认证可免费获得专业版链接   Pycharm2022.2版本debug代码时有bug，如果有影响建议先降级到2022.1版本使用 特别说明PyCharm是调试代码的工具。若代码需要长时间运行，请到服务器终端中用screen挂到后台运行。具体可参考终端使用 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc4.gif"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc5.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc6.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc7.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc8.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc9.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc31.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc32.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc33.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc34.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc7.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc35.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc36.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc37.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc10.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc17.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc18.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc11.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc19.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc20.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc22.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc23.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc27.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc28.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc24.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc25.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc12.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc14.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc15.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc16.png"><meta property="article:published_time" content="2022-11-19T04:00:00.000Z"><meta property="article:modified_time" content="2022-11-27T12:19:45.537Z"><meta property="og:updated_time" content="2022-11-27T12:19:45.537Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "Pycharm配置教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2022-11-19T04:00:00.000Z",
+    "dateModified": "2022-11-27T12:19:45.537Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "前言本教程基于PyCharm 2022.2 Professional专业版，Community社区版不支持连接到远程服务器，故无法使用。 官网学生认证可免费获得专业版链接   Pycharm2022.2版本debug代码时有bug，如果有影响建议先降级到2022.1版本使用 特别说明PyCharm是调试代码的工具。若代码需要长时间运行，请到服务器终端中用screen挂到后台运行。具体可参考终端使用 - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://mistgpu.com" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=https://blog.mistgpu.com&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=Pycharm配置教程&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.mistgpu.com&text=Pycharm配置教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACNklEQVR42u2b0W6DQAwE+f+fbl+r9s47BqImeHiJFC4wV2HjXbvH1wcch5BCCinkG0AexfHz/J8LbNasPnfnq/sKORty+dD+umgFtrvp6nr0vkIKmR7wam21sd36dF8hhawWrwKogqAvAyGFvBI4u+ReFQ3VZoUU8myBUQVPBU6C7bYqSMjHQSYh9qrPW9WikI+BRMZR2EAMgGLdba6akI+BTAKfFLNEwFWmwlasCTkSkoilVHQkEyuJt63ZIORISGoiVaZqd5PYhBByNGRVNNDgIMbppTeOkCMgU6GamkqVkdppVpWBI+Q4SJp0d0n+zHe7wBNSyCqppoChTXki0lAyF3IMZDLjuwDEqCKBJeRMyJR8adLvGKZks0LOhUwirDKZ6OASaa7G7oOQoyApUAqmbuDFl4GQYyGTGZqK49bwRzDIhBSSiPau0d8dDNluTkghQcImGztTbCzPCTkWMiVg2nTqFMBpuETIuZD0R8n8T5tNpiyqzIUcBUmMU2KKkn/4qBqgyBwQ8tGQtMmUzNIzDahW0SvkKEjy0HeG69ILAQ87CTkWklw0BVAatDuzASFnQyahRcU+LTpI01XImZCk6XTFkKKGwfKPIuRIyGS2pwSempmdYSc8zSLk4yG7jU4i7rsCDqlFIUdBkoAhjaVUNCcTLFbmQgoJhkGuGAxVMAopJE3AlYAjiTqZCEIKSZrytDnaMbBigSzkWMiOEOsMf9DkfrtaFPKjId/5EFJIIYX8x+MbUPCU0+6Zyd8AAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Pycharm配置教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2022-11-19</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Pycharm配置教程&url=https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.mistgpu.com/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACNklEQVR42u2b0W6DQAwE+f+fbl+r9s47BqImeHiJFC4wV2HjXbvH1wcch5BCCinkG0AexfHz/J8LbNasPnfnq/sKORty+dD+umgFtrvp6nr0vkIKmR7wam21sd36dF8hhawWrwKogqAvAyGFvBI4u+ReFQ3VZoUU8myBUQVPBU6C7bYqSMjHQSYh9qrPW9WikI+BRMZR2EAMgGLdba6akI+BTAKfFLNEwFWmwlasCTkSkoilVHQkEyuJt63ZIORISGoiVaZqd5PYhBByNGRVNNDgIMbppTeOkCMgU6GamkqVkdppVpWBI+Q4SJp0d0n+zHe7wBNSyCqppoChTXki0lAyF3IMZDLjuwDEqCKBJeRMyJR8adLvGKZks0LOhUwirDKZ6OASaa7G7oOQoyApUAqmbuDFl4GQYyGTGZqK49bwRzDIhBSSiPau0d8dDNluTkghQcImGztTbCzPCTkWMiVg2nTqFMBpuETIuZD0R8n8T5tNpiyqzIUcBUmMU2KKkn/4qBqgyBwQ8tGQtMmUzNIzDahW0SvkKEjy0HeG69ILAQ87CTkWklw0BVAatDuzASFnQyahRcU+LTpI01XImZCk6XTFkKKGwfKPIuRIyGS2pwSempmdYSc8zSLk4yG7jU4i7rsCDqlFIUdBkoAhjaVUNCcTLFbmQgoJhkGuGAxVMAopJE3AlYAjiTqZCEIKSZrytDnaMbBigSzkWMiOEOsMf9DkfrtaFPKjId/5EFJIIYX8x+MbUPCU0+6Zyd8AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%89%B9%E5%88%AB%E8%AF%B4%E6%98%8E"><span class="post-toc-number">2.</span> <span class="post-toc-text">特别说明</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%8C%85"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装中文包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AESSH%E8%A7%A3%E9%87%8A%E5%99%A8-2022-2"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置SSH解释器(2022.2+)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">设置服务器信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A7%A3%E9%87%8A%E5%99%A8%E8%B7%AF%E5%BE%84"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">设置解释器路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">设置同步文件夹</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AESSH%E8%A7%A3%E9%87%8A%E5%99%A8-2022-1"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置SSH解释器(2022.1-)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF-1"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">设置服务器信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A7%A3%E9%87%8A%E5%99%A8%E8%B7%AF%E5%BE%84-1"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">设置解释器路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%A4%B9-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">设置同步文件夹</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%8C%E6%88%90"><span class="post-toc-number">6.</span> <span class="post-toc-text">完成</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="post-toc-number">7.</span> <span class="post-toc-text">运行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">编辑配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BF%90%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="post-toc-number">7.1.1.</span> <span class="post-toc-text">设置运行参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-number">7.1.2.</span> <span class="post-toc-text">设置环境变量</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF"><span class="post-toc-number">8.</span> <span class="post-toc-text">启动服务器终端</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B5%8F%E8%A7%88-%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="post-toc-number">9.</span> <span class="post-toc-text">浏览&#x2F;下载服务器中的文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8E%92%E6%9F%A5"><span class="post-toc-number">10.</span> <span class="post-toc-text">排查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%8F%A3-%E8%A7%A3%E9%87%8A%E5%99%A8%E8%B7%AF%E5%BE%84-2022-2"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">修改服务器端口&#x2F;解释器路径(2022.2+)</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程基于PyCharm 2022.2 Professional专业版，Community社区版不支持连接到远程服务器，故无法使用。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/community/education/#students">官网学生认证可免费获得专业版链接</a></p>
+<blockquote>
+</blockquote>
+<p>Pycharm2022.2版本debug代码时有<a target="_blank" rel="noopener" href="https://youtrack.jetbrains.com/issue/PY-55448/Stop-script-on-remote-interpreter-hangs">bug</a><br>，如果有影响建议先<a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/pycharm/download/other.html">降级到2022.1版本</a>使用</p>
+<h1 id="特别说明"><a href="#特别说明" class="headerlink" title="特别说明"></a>特别说明</h1><p>PyCharm是调试代码的工具。若代码需要长时间运行，请到服务器终端中用screen挂到后台运行。具体可参考<a href="http://blog.mistgpu.com/2022/11/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C">终端使用教程</a><br>。</p>
+<hr>
+<h1 id="安装中文包"><a href="#安装中文包" class="headerlink" title="安装中文包"></a>安装中文包</h1><p>PyCharm已有中文语言包，可在<code>PyCharm设置 - Plugins</code>中搜索<code>Language Pack</code>并安装，随后重启PyCharm即可生效。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc1.png" class="">
+
+<h1 id="配置SSH解释器-2022-2"><a href="#配置SSH解释器-2022-2" class="headerlink" title="配置SSH解释器(2022.2+)"></a>配置SSH解释器(2022.2+)</h1><p>打开项目后，进入Pycharm设置，选择<code>项目-Python解释器</code>并在<code>添加解释器</code>中选择<code>SSH</code></p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc2.png" class="">
+
+<h2 id="设置服务器信息"><a href="#设置服务器信息" class="headerlink" title="设置服务器信息"></a>设置服务器信息</h2><p>依次填入服务器域名、SSH端口。用户名固定为<code>mist</code></p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc4.gif" class="">
+
+<ul>
+<li>如果没有私钥，则将创建服务器时设置的服务器密码填入密码框中并下一步</li>
+<li>如果有私钥，则点击<code>密钥对</code>按钮，点击红框出的文件夹图标选择<code>.pem</code>私钥文件后下一步</li>
+</ul>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc5.png" class="">
+
+<h2 id="设置解释器路径"><a href="#设置解释器路径" class="headerlink" title="设置解释器路径"></a>设置解释器路径</h2><p>选择系统解释器后，点击解释器右边的三个点，找到解释器路径</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc6.png" class="">
+
+<ul>
+<li>如果使用默认环境，则找到<code>/usr/local/bin/python</code>即可</li>
+<li>如果使用conda虚拟环境，则需要找到<strong>激活环境</strong>后<code>which python</code>返回的路径，如下图所示</li>
+</ul>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc7.png" class="">
+
+<h2 id="设置同步文件夹"><a href="#设置同步文件夹" class="headerlink" title="设置同步文件夹"></a>设置同步文件夹</h2><p>按下图所示，将远程路径设置为<code>/home/mist</code>。</p>
+<blockquote>
+<p>如果需要同时部署多个项目，建议提前在服务器上新建文件夹，然后将远程路径设置到<code>/home/mist/&lt;文件夹名&gt;</code></p>
+</blockquote>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc8.png" class="">
+
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc9.png" class="">
+
+<p>完成后点击下方的创建按钮即可。</p>
+<h1 id="配置SSH解释器-2022-1"><a href="#配置SSH解释器-2022-1" class="headerlink" title="配置SSH解释器(2022.1-)"></a>配置SSH解释器(2022.1-)</h1><p>打开项目后，进入Pycharm设置，选择<code>项目-Python解释器</code>，点击右上角的齿轮按钮并选择<code>添加</code></p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc31.png" class="">
+
+<h2 id="设置服务器信息-1"><a href="#设置服务器信息-1" class="headerlink" title="设置服务器信息"></a>设置服务器信息</h2><p>选择<code>SSH解释器</code>并依次填入服务器域名、SSH端口。用户名固定为<code>mist</code></p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc32.png" class="">
+
+<ul>
+<li>如果没有私钥，则将创建服务器时设置的服务器密码填入密码框中并下一步</li>
+<li>如果有私钥，则点击<code>密钥对</code>按钮，点击红框出的文件夹图标选择<code>.pem</code>私钥文件后下一步</li>
+</ul>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc33.png" class="">
+
+<h2 id="设置解释器路径-1"><a href="#设置解释器路径-1" class="headerlink" title="设置解释器路径"></a>设置解释器路径</h2><p>点击解释器一栏右侧的文件夹图标，找到解释器路径</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc34.png" class="">
+
+<ul>
+<li>如果使用默认环境，则找到<code>/usr/local/bin/python</code>即可</li>
+<li>如果使用conda虚拟环境，则需要找到<strong>激活环境</strong>后<code>which python</code>返回的路径，如下图所示</li>
+</ul>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc7.png" class="">
+
+<h2 id="设置同步文件夹-1"><a href="#设置同步文件夹-1" class="headerlink" title="设置同步文件夹"></a>设置同步文件夹</h2><p>按下图所示，将远程路径设置为<code>/home/mist</code>。</p>
+<blockquote>
+<p>如果需要同时部署多个项目，建议提前在服务器上新建文件夹，然后将远程路径设置到<code>/home/mist/&lt;文件夹名&gt;</code></p>
+</blockquote>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc35.png" class="">
+
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc36.png" class="">
+
+<p>设置好后点击下方的完成按钮即可。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc37.png" class="">
+
+<h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc10.png" class="">
+
+<p>完成后Pycharm将开始上传文件并更新解释器索引。上传耗时取决于您的网络上行带宽；更新索引一般需要几分钟。</p>
+<p>Pycharm默认会重复上传并覆盖服务器里已有的文件，可以到菜单栏<code>工具-部署</code>中点击选项修改。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc17.png" class="">
+
+<p><strong>取消选择</strong>覆盖最新文件，选上创建空目录即可。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc18.png" class="">
+
+<hr>
+<p>完成后在Pycharm界面右下角，能看到红框1处所示当前的解释器已变为<code>Remote Python</code>，以及红框2处所示的部署服务器。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc11.png" class="">
+
+<p>若需要换回本地环境运行，则分别点这两个地方，将解释器设置为本地的解释器，部署设置为<code>无默认服务器</code></p>
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>当右下角解释器为<code>Remote Python</code>时，点击运行/调试按钮即可使用服务器的算力执行程序</p>
+<h2 id="编辑配置"><a href="#编辑配置" class="headerlink" title="编辑配置"></a>编辑配置</h2><p>在Pycharm界面右上角点击编辑配置，可以修改程序运行时需要的参数及环境变量</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc19.png" class="">
+
+<h3 id="设置运行参数"><a href="#设置运行参数" class="headerlink" title="设置运行参数"></a>设置运行参数</h3><p>部分程序要求在终端中传入对应的参数，可在编辑配置页面的<code>形参</code>中设置对应地参数。</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc20.png" class="">
+
+<p>如原本命令为<code>python train.py -net resnet152 -gpu -b 120</code>，那么就在形参中写<code>-net resnet152 -gpu -b 120</code></p>
+<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>如果需要修改环境变量，则点击环境变量右边的小图标</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc22.png" class="">
+
+<p>将需要添加的环境变量以键值对的形式添加进去即可</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc23.png" class="">
+
+<h1 id="启动服务器终端"><a href="#启动服务器终端" class="headerlink" title="启动服务器终端"></a>启动服务器终端</h1><p>在菜单栏<code>工具-部署</code>中点击<code>启动SSH会话</code>即可打开服务器的终端</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc27.png" class="">
+
+<blockquote>
+<p>直接点击<code>Terminal</code>默认启动的是自己电脑的终端，注意不要混淆了</p>
+</blockquote>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc28.png" class="">
+
+<h1 id="浏览-下载服务器中的文件"><a href="#浏览-下载服务器中的文件" class="headerlink" title="浏览/下载服务器中的文件"></a>浏览/下载服务器中的文件</h1><p>在菜单栏<code>工具-部署</code>中点击<code>浏览远程主机</code>即可查看到服务器上的文件</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc24.png" class="">
+
+<p>进入<code>/home/mist/</code>文件夹后，右键点击文件即可下载到本地或执行其他操作</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc25.png" class="">
+
+<h1 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h1><p>如果在使用pycharm过程中遇到了问题，则可以用下面的方法排查。</p>
+<p>进入Pycharm设置，按下图所示点击选择全部显示</p>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc12.png" class="">
+
+<h2 id="修改服务器端口-解释器路径-2022-2"><a href="#修改服务器端口-解释器路径-2022-2" class="headerlink" title="修改服务器端口/解释器路径(2022.2+)"></a>修改服务器端口/解释器路径(2022.2+)</h2><ol>
+<li>删除已有的解释器，点击加号并选择SSH</li>
+<li>在SSH连接中选择现有，并点击下图2所示的右侧的三个点</li>
+</ol>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc14.png" class="">
+
+<ol start="3">
+<li>选择要修改的配置，设置好新端口后点测试连接。连接成功后确认，点击下一步。</li>
+</ol>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc15.png" class="">
+
+<ol start="4">
+<li>选择系统解释器，点击解释器右侧的三个点，定位到新的地址后确认。</li>
+<li>同步文件夹同上，设置到<code>/home/mist</code>下即可</li>
+</ol>
+<img src="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/pyc16.png" class="">
+
+<ol start="6">
+<li>完成</li>
+</ol>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2022-11-27");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-11-19T04:00:00.000Z" itemprop="datePublished">2022-11-19</time>
+
+    , 最后修改于&nbsp;<time datetime="2022-11-27T12:19:45.537Z" itemprop="dateModified">2022-11-27</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">SSH连接教程</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2021/04/19/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">图形界面连接教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a target="_blank" rel="noopener" href="https://mistgpu.com" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>

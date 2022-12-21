@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>SSH连接教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="https://blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="SSH连接教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="通过SSH连接可以进入到服务器执行各种操作，将会涉及到Linux命令，如不熟悉Linux命令请谨慎操作。 重要提示SSH连接遇到网络波动时会中断，前台运行的进程会被终止。 如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。 因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存断点。 方法一：运行命令改为 nohup 原命令 &amp;amp - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-3.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius2.gif"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius3.gif"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty3.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty4.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell3.gif"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell4.png"><meta property="article:published_time" content="2022-11-25T04:00:00.000Z"><meta property="article:modified_time" content="2022-11-27T12:29:14.765Z"><meta property="og:updated_time" content="2022-11-27T12:29:14.765Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "SSH连接教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2022-11-25T04:00:00.000Z",
+    "dateModified": "2022-11-27T12:29:14.765Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "通过SSH连接可以进入到服务器执行各种操作，将会涉及到Linux命令，如不熟悉Linux命令请谨慎操作。 重要提示SSH连接遇到网络波动时会中断，前台运行的进程会被终止。 如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。 因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存断点。 方法一：运行命令改为 nohup 原命令 &amp;amp;amp - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://mistgpu.com" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=https://blog.mistgpu.com&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=SSH连接教程&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.mistgpu.com&text=SSH连接教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAAAAAAYplnuAAACrklEQVR42u3c207jYAxF4b7/S8MtKvm913YLCGX1Bgai9Es0ruPDzOPjH74eokWLFn1D9GN4PR/z9c9Xv7v6+vx7cuzRIVo0RF/+pX/6+dVxz298dYFXIHr+b+cWLbpAn056QpyOOQXy6VzUIVr0O9GnwJmC7gp1SjSiRf8FOiUAAhoTh2jRb0bTD/spCGmApZvz8lOe6Nujp4LyN7++rRoXfWt0bPpNH/bLQCQB+FLXVPSt0enDfwrY1KAhF07OL1p0i54w6fsmQU3HoqaPaNEQTYuA9PCfksWUoNJNEy26QZNC9ZUAI0MlNEwSLRqgSWCkpiRNGPS8qLAVLTqg6YN8ShxpqJ8GouNyjGjRC3RankqD0RSQ6TzjIoFo0QWaPqSTpZOmoUNugGjRDTotVaVioSl2m0Eo6pqKFg2SS9tcSYkiJSByU0SL3qCbxsxm+ZAmnbpZI1r0YaBPkkcaYKZkRW9GbKqLFl001enwnTTLJxApDkSL3qLbhiBpmjeFA/letGiKTm+WGuoElJYHUoISLbpBkzehgUIbMal5ebwY0aIBmgww2wRDh1BpOVG06A06DYLi8GaZWFYDftGil/1puqBCfpaWa1cLsqJFgwbk9PCflk1SMKUEli5MtOgWTYbqdJhDBqNTMY0akKJFL/vTU4A0MFJY1IMi0aLBPzgjQLp4SApVupwiWvQG3TYESfORNGbSsBRX46JFg0KUNh/JBbaFL3pgEi06FLbNcLMpiMlC+PQAJ1p0g64bJiAYadJJBfV6W0z07dFTQmgaiW3R2zRwRIv+WCwTToGBGoRg0SWdv+4wiRa9RE+JIzXht8swuFkjWvTyP4KnDZlXg/F4saJFF+hmAYU89JMm448VAaJvj54K22Ypa7NkmBrrokW36P/0Ei1atOgboT8B8SV6iEbhYK8AAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">SSH连接教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2022-11-25</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=SSH连接教程&url=https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.mistgpu.com/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAAAAAAYplnuAAACrklEQVR42u3c207jYAxF4b7/S8MtKvm913YLCGX1Bgai9Es0ruPDzOPjH74eokWLFn1D9GN4PR/z9c9Xv7v6+vx7cuzRIVo0RF/+pX/6+dVxz298dYFXIHr+b+cWLbpAn056QpyOOQXy6VzUIVr0O9GnwJmC7gp1SjSiRf8FOiUAAhoTh2jRb0bTD/spCGmApZvz8lOe6Nujp4LyN7++rRoXfWt0bPpNH/bLQCQB+FLXVPSt0enDfwrY1KAhF07OL1p0i54w6fsmQU3HoqaPaNEQTYuA9PCfksWUoNJNEy26QZNC9ZUAI0MlNEwSLRqgSWCkpiRNGPS8qLAVLTqg6YN8ShxpqJ8GouNyjGjRC3RankqD0RSQ6TzjIoFo0QWaPqSTpZOmoUNugGjRDTotVaVioSl2m0Eo6pqKFg2SS9tcSYkiJSByU0SL3qCbxsxm+ZAmnbpZI1r0YaBPkkcaYKZkRW9GbKqLFl001enwnTTLJxApDkSL3qLbhiBpmjeFA/letGiKTm+WGuoElJYHUoISLbpBkzehgUIbMal5ebwY0aIBmgww2wRDh1BpOVG06A06DYLi8GaZWFYDftGil/1puqBCfpaWa1cLsqJFgwbk9PCflk1SMKUEli5MtOgWTYbqdJhDBqNTMY0akKJFL/vTU4A0MFJY1IMi0aLBPzgjQLp4SApVupwiWvQG3TYESfORNGbSsBRX46JFg0KUNh/JBbaFL3pgEi06FLbNcLMpiMlC+PQAJ1p0g64bJiAYadJJBfV6W0z07dFTQmgaiW3R2zRwRIv+WCwTToGBGoRg0SWdv+4wiRa9RE+JIzXht8swuFkjWvTyP4KnDZlXg/F4saJFF+hmAYU89JMm448VAaJvj54K22Ypa7NkmBrrokW36P/0Ei1atOgboT8B8SV6iEbhYK8AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA"><span class="post-toc-number">1.</span> <span class="post-toc-text">重要提示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%AC%E6%9C%BA%E7%BB%88%E7%AB%AF"><span class="post-toc-number">2.</span> <span class="post-toc-text">本机终端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8B%E8%BD%BD%E7%A7%81%E9%92%A5%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%90%8D-pem%E5%B9%B6%E6%94%BE%E5%9C%A8%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载私钥文件用户名.pem并放在用户目录下</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E7%BB%88%E7%AB%AF"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">启动终端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8%E6%89%93%E5%BC%80%E7%9A%84%E7%BB%88%E7%AB%AF%E7%AA%97%E5%8F%A3%E4%B8%AD%E7%B2%98%E8%B4%B4SSH%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">在打开的终端窗口中粘贴SSH命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%B7%B2%E8%BF%9E%E6%8E%A5"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">确认已连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Termius"><span class="post-toc-number">3.</span> <span class="post-toc-text">Termius</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A1%AB%E5%86%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">填写服务器信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">连接到服务器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PuTTY"><span class="post-toc-number">4.</span> <span class="post-toc-text">PuTTY</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85PuTTY"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装PuTTY</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A1%AB%E5%86%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF-1"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">填写服务器信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%8C%E6%88%90"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">完成</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Xshell"><span class="post-toc-number">5.</span> <span class="post-toc-text">Xshell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85Xshell"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">安装Xshell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BA%E9%85%8D%E7%BD%AE"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">新建配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E5%8F%8A%E5%AF%86%E7%A0%81-%E7%A7%81%E9%92%A5"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">设置用户名及密码&#x2F;私钥</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%BA%E5%99%A8"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">连接机器</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>通过SSH连接可以进入到服务器执行各种操作，将会涉及到Linux命令，如不熟悉Linux命令请谨慎操作。</p>
+<h2 id="重要提示"><a href="#重要提示" class="headerlink" title="重要提示"></a>重要提示</h2><p>SSH连接遇到网络波动时会中断，前台运行的进程<strong>会被终止</strong>。</p>
+<p>如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。</p>
+<p>因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存断点。</p>
+<p>方法一：运行命令改为 <code>nohup 原命令 &amp;</code>，输出在<code>nohup.out</code>文件中<br>方法二：(推荐!) 在运行程序前 先在终端中输入 <code>screen -SL 会话名 -Logfile 日志名</code> 新建会话</p>
+<blockquote>
+<p>会话名与日志名自定。<br>需要在运行程序前启动screen，开始运行后无法操作</p>
+</blockquote>
+<p>之后输入需要执行的命令(如<code>python 文件名.py</code>)。<br>输入 <code>screen -dr 会话名</code> 恢复会话；程序输出可恢复会话或查看日志文件</p>
+<p>具体screen使用教程请参考<a href="http://blog.mistgpu.com/2022/11/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#screen%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">终端使用教程</a></p>
+<h2 id="本机终端"><a href="#本机终端" class="headerlink" title="本机终端"></a>本机终端</h2><blockquote>
+<p>Win10+, macOS, Linux 可用</p>
+</blockquote>
+<h3 id="下载私钥文件用户名-pem并放在用户目录下"><a href="#下载私钥文件用户名-pem并放在用户目录下" class="headerlink" title="下载私钥文件用户名.pem并放在用户目录下"></a>下载私钥文件<code>用户名.pem</code>并放在用户目录下</h3><ul>
+<li>Windows: <code>C:\Users\&lt;账户名&gt;\&lt;用户名&gt;.pem</code></li>
+<li>macOS: <code>/Users/&lt;账户名&gt;/&lt;用户名&gt;.pem</code></li>
+<li>Linux: <code>/home/&lt;账户名&gt;/&lt;用户名&gt;.pem</code></li>
+</ul>
+<h3 id="启动终端"><a href="#启动终端" class="headerlink" title="启动终端"></a>启动终端</h3><ul>
+<li>Windows: 在开始菜单中搜索<code>cmd</code>或<code>powershell</code></li>
+<li>macOS: 按下<code>Command + 空格</code>，在Spotlight中搜索<code>终端</code></li>
+<li>Linux: Ubuntu系统可用<code>Ctrl + alt + t</code>快捷键启动</li>
+</ul>
+<h3 id="在打开的终端窗口中粘贴SSH命令"><a href="#在打开的终端窗口中粘贴SSH命令" class="headerlink" title="在打开的终端窗口中粘贴SSH命令"></a>在打开的终端窗口中粘贴SSH命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/&lt;用户名&gt;.pem mist@&lt;服务器域名&gt; -p &lt;ssh端口&gt;</span><br></pre></td></tr></table></figure>
+
+<p>初次连接机器时会询问是否接受服务器指纹，会有下图红框的提示。输入<code>yes</code>即可。</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-1.png" class="">
+
+<p>如果没有私钥文件，则会提示输入密码，如下图所示。</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-2.png" class="">
+
+<p>此时需要输入创建服务器时设置的服务器密码，输入过程中字符<strong>不会显示在屏幕上</strong>，输入完成后回车即可。</p>
+<h3 id="确认已连接"><a href="#确认已连接" class="headerlink" title="确认已连接"></a>确认已连接</h3><p>成功连接上机器后会显示MistGPU及注意事项，同时终端标识符会变成如下图红框处所示。</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/ssh-3.png" class="">
+
+<p>其中红色的<code>$</code>字符表示可以在此处输入命令。</p>
+<h2 id="Termius"><a href="#Termius" class="headerlink" title="Termius"></a>Termius</h2><blockquote>
+<p>Win7+, macOS, Linux 可用</p>
+</blockquote>
+<p>从<a target="_blank" rel="noopener" href="https://termius.com/download/">Termius官网</a>下载后安装，打开后在<code>Host</code>边栏中依次选择<code>Add</code> - <code>New Host</code></p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius1.png" class="">
+
+<h3 id="填写服务器信息"><a href="#填写服务器信息" class="headerlink" title="填写服务器信息"></a>填写服务器信息</h3><p>在右侧边栏中一次填入以下信息</p>
+<ul>
+<li><p>Label: 连接名称，任取，可选</p>
+</li>
+<li><p>Address: 服务器域名，必填</p>
+</li>
+<li><p>Port: SSH端口，必填</p>
+</li>
+<li><p>Username: 用户名，固定为mist</p>
+</li>
+<li><p>如果没有私钥，则将创建服务器时设置的服务器密码填入Password中</p>
+</li>
+<li><p>如果有私钥，则点击粉框6处的<code>Set a Key</code>按钮</p>
+</li>
+</ul>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius2.gif" class="">
+
+<h3 id="连接到服务器"><a href="#连接到服务器" class="headerlink" title="连接到服务器"></a>连接到服务器</h3><p>配置完成后双击连接即可。初次连接服务器时会提示是否添加指纹，选择<code>Add &amp; continue</code>即可。</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/termius3.gif" class="">
+
+<h2 id="PuTTY"><a href="#PuTTY" class="headerlink" title="PuTTY"></a>PuTTY</h2><blockquote>
+<p>Win7+ 可用</p>
+</blockquote>
+<h3 id="安装PuTTY"><a href="#安装PuTTY" class="headerlink" title="安装PuTTY"></a>安装PuTTY</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/putty/latest.html">清华镜像站</a></li>
+</ul>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty1.png" class="">
+
+<h3 id="填写服务器信息-1"><a href="#填写服务器信息-1" class="headerlink" title="填写服务器信息"></a>填写服务器信息</h3><p>在红框1处分别填入<code>mist@服务器域名</code>以及<code>SSH端口</code></p>
+<ul>
+<li>如果没有私钥，则点击右下角的<code>Open</code>按钮连接即可</li>
+<li>如果有私钥，则进入粉框2处选择私钥文件<code>用户名.ppk</code>，如下图所示<blockquote>
+<p>PuTTY及WinSCP不支持<code>.pem</code>文件，请使用<code>.ppk</code>文件</p>
+</blockquote>
+</li>
+</ul>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty2.png" class="">
+
+<p>选择好文件后点击右下角<code>Open</code>按钮连接。</p>
+<p>初次连接服务器时会有下图提示，选择<code>Accept</code>即可</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty3.png" class="">
+
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>同上，连接成功后会有欢迎语以及注意事项，看到红色<code>$</code>符号后输入命令即可。</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/putty4.png" class="">
+
+<h2 id="Xshell"><a href="#Xshell" class="headerlink" title="Xshell"></a>Xshell</h2><blockquote>
+<p>Win7+ 可用</p>
+</blockquote>
+<h3 id="安装Xshell"><a href="#安装Xshell" class="headerlink" title="安装Xshell"></a>安装Xshell</h3><p>在<a target="_blank" rel="noopener" href="https://www.xshell.com/zh/free-for-home-school/">Xshell官网</a>下载并安装Xshell，下载链接会发送到个人邮箱中。</p>
+<h3 id="新建配置"><a href="#新建配置" class="headerlink" title="新建配置"></a>新建配置</h3><p>点击左上角<code>文件</code>菜单栏中选择<code>新建</code></p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell1.png" class="">
+
+<ul>
+<li>名称：连接名称，任取</li>
+<li>协议：SSH</li>
+<li>主机：服务器域名(不包括<code>mist@</code>)</li>
+<li>端口号：SSH端口</li>
+</ul>
+<h3 id="设置用户名及密码-私钥"><a href="#设置用户名及密码-私钥" class="headerlink" title="设置用户名及密码/私钥"></a>设置用户名及密码/私钥</h3><p>点击红框1处的<code>用户身份验证</code>，右侧用户名固定为<code>mist</code></p>
+<ul>
+<li>如果没有私钥，则在红框2中只勾选<code>Password</code>，并在上方填入创建服务器时设置的服务器密码</li>
+<li>如果有私钥，则在红框2中只勾选<code>Public Key</code>，并在选中此项的情况下点击红框3中的<code>设置</code></li>
+</ul>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell2.png" class="">
+
+<p>在弹出的Public key设置窗口中依次点击<code>浏览</code>，<code>导入</code>。选择<code>.pem</code>私钥文件确认即可</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell3.gif" class="">
+
+<h3 id="连接机器"><a href="#连接机器" class="headerlink" title="连接机器"></a>连接机器</h3><p>初次连接服务器时会有下图提示，选择<code>接受并保存</code>即可</p>
+<img src="/2022/11/25/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/xshell4.png" class="">
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2022-11-27");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-11-25T04:00:00.000Z" itemprop="datePublished">2022-11-25</time>
+
+    , 最后修改于&nbsp;<time datetime="2022-11-27T12:29:14.765Z" itemprop="dateModified">2022-11-27</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Jupyter使用教程</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2022/11/19/Pycharm%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Pycharm配置教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a target="_blank" rel="noopener" href="https://mistgpu.com" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>

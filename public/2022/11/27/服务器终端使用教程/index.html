@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>服务器终端使用教程 | MistGPU博客</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/medium.png">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="MistGPU博客"><meta name="msapplication-starturl" content="https://blog.mistgpu.com"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MistGPU博客"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="服务器终端使用教程 | MistGPU博客"><meta property="og:site_name" content="MistGPU博客"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><meta property="og:locale" content="zh-CN"><meta name="description" content="进入服务器终端的方式有很多种，不同方式之间并无区别，选择最合适的即可。 进入服务器终端 Jupyter中启动终端 本地SSH连接进入终端 网页命令行  常用终端操作重要提示SSH连接遇到网络波动时会中断，前台运行的进程会被终止。 如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。 因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存 - Deep Mist Tech - MistGPU博客"><meta name="keywords" content="博客,人工智能,深度学习,GPU"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal1.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal2.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal6.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal7.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal8.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal3.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal4.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal5.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal9.png"><meta property="og:image" content="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal10.png"><meta property="article:published_time" content="2022-11-27T04:00:00.000Z"><meta property="article:modified_time" content="2022-11-27T12:29:00.757Z"><meta property="og:updated_time" content="2022-11-27T12:29:00.757Z"><meta property="article:author" content="Deep Mist Tech"><meta property="article:tag" content="博客,人工智能,深度学习,GPU"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.mistgpu.com/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+    },
+    "headline": "服务器终端使用教程 | MistGPU博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.mistgpu.com/img/large.png"
+    },
+    
+    "datePublished": "2022-11-27T04:00:00.000Z",
+    "dateModified": "2022-11-27T12:29:00.757Z",
+    "author": {
+        "@type": "Person",
+        "name": "Deep Mist Tech",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/medium.png"
+        },
+        "description": "分享深度学习知识,<a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "MistGPU博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.mistgpu.com/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.mistgpu.com/search.html?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "博客,人工智能,深度学习,GPU",
+    "description": "进入服务器终端的方式有很多种，不同方式之间并无区别，选择最合适的即可。 进入服务器终端 Jupyter中启动终端 本地SSH连接进入终端 网页命令行  常用终端操作重要提示SSH连接遇到网络波动时会中断，前台运行的进程会被终止。 如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。 因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存 - Deep Mist Tech - MistGPU博客"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">MistGPU博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                分享深度学习知识<br><a target="_blank" rel="noopener" href="https://mistgpu.com">提供在线GPU出租</a>
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search.html" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://mistgpu.com" class="navbar-link">租用GPU</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=MistGPU博客&url=https://blog.mistgpu.com&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=服务器终端使用教程&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.mistgpu.com&text=服务器终端使用教程" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAADECAAAAADlzdG3AAADLElEQVR42u3awU7DQAxF0f7/T8MKCaKM33UyDgXdbFiQJnMqueOx/fr4B9dLhAgRIkSMI17F9fX/7/f+eMjhnuNnj+84u6d6ZrUuESImEadBc1j8Geb4wtW9qwWvnofXJULEIIIEXBXwZ7DVO+gz4z0iRPwCIi262qBSoFdIESLeGbFa0AqXEsmU6IkQ8Q6IKilbBWsFJhva6jPbs1gRIpoIEpC/8Xd7tUOECICIRdsiwKrELQXuKvBHquIiRDT7E3STqxK+6oeiKiqT/y/fL0LEMIIWCSgoQenBavUDI0LEBCIVrWjwr9CrxVX3k6AWIWIKkYKMJHupAZ+aLTS444CKCBEbELRoRhK4K839cpEFVISIpxEpKSSDLOSQRDc6ESKeQtBCblVMo/d0mvwo8EWIGEJ0Gu6k+HxngIU0XkSImESkACSLqoaz6MHqVjNehIjNiOpATgYTafJGkz9aLBAhYgJBHkg2MpIIUgjdaEWImESQpklnCPFK0kgboSJETCKq4kAV3CkRLAfV4YB73GhFiBhApEQrLbQzoNJp9KPkVISIBxF0YIU26tM9qcCNs1gRIoYQqRCAG+Zh0ySNSzy0JULEBgRJvqqg7g62VEU28u4yixUhYhMiNTVI8JNiA208pg1QhIhJBG1q0EHGqjmTEsCyeHy2JhEihhEp4ate1krcLnxhZTNehIghRCoAdAoFKVlMSSA5hIkQMYkgyR9tDKbF0UJ1TBJFiBhCrA4qneQQH2TC+1IxTYSIaQQ5rNODfadoRodcWgVlESI2IGgTngysXG1Kdoa54oCKCBE3EZ1BxVQUJg0TOuhIBiRFiJhCdIe0yEALHVikA5KoUyRCxCZEZ5CRLqja+FabYWquiBDxBKJbzO02T+hGSJv/saAsQsRNRLquJHzkRyM1bNJzRYiYQnSHB8lhiRz0q4MYLiaIEDGESAd1gkyL6gxnpXWIEPEEonvgSU140iQhSWMrsEWIeACRGoddaBoWI4MxIkS8A4IEW1rYnWL06TNFiBhEkASQNNDJl3H3MyJETCNooYAGYjrwdwrOZeNGhIgBxF++RIgQIULE2PUJySyg7i0EbosAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">服务器终端使用教程</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/medium.png" src="/img/suka-lazyload.gif" alt="Deep Mist Tech's Avatar">
+        <span>2022-11-27</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=服务器终端使用教程&url=https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&pic=https://blog.mistgpu.com/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=MistGPU博客&title=MistGPU博客&summary=分享深度学习知识，提供在线GPU出租&pics=https://blog.mistgpu.com/img/large.png&url=https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.mistgpu.com/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&text=MistGPU博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAADECAAAAADlzdG3AAADLElEQVR42u3awU7DQAxF0f7/T8MKCaKM33UyDgXdbFiQJnMqueOx/fr4B9dLhAgRIkSMI17F9fX/7/f+eMjhnuNnj+84u6d6ZrUuESImEadBc1j8Geb4wtW9qwWvnofXJULEIIIEXBXwZ7DVO+gz4z0iRPwCIi262qBSoFdIESLeGbFa0AqXEsmU6IkQ8Q6IKilbBWsFJhva6jPbs1gRIpoIEpC/8Xd7tUOECICIRdsiwKrELQXuKvBHquIiRDT7E3STqxK+6oeiKiqT/y/fL0LEMIIWCSgoQenBavUDI0LEBCIVrWjwr9CrxVX3k6AWIWIKkYKMJHupAZ+aLTS444CKCBEbELRoRhK4K839cpEFVISIpxEpKSSDLOSQRDc6ESKeQtBCblVMo/d0mvwo8EWIGEJ0Gu6k+HxngIU0XkSImESkACSLqoaz6MHqVjNehIjNiOpATgYTafJGkz9aLBAhYgJBHkg2MpIIUgjdaEWImESQpklnCPFK0kgboSJETCKq4kAV3CkRLAfV4YB73GhFiBhApEQrLbQzoNJp9KPkVISIBxF0YIU26tM9qcCNs1gRIoYQqRCAG+Zh0ySNSzy0JULEBgRJvqqg7g62VEU28u4yixUhYhMiNTVI8JNiA208pg1QhIhJBG1q0EHGqjmTEsCyeHy2JhEihhEp4ate1krcLnxhZTNehIghRCoAdAoFKVlMSSA5hIkQMYkgyR9tDKbF0UJ1TBJFiBhCrA4qneQQH2TC+1IxTYSIaQQ5rNODfadoRodcWgVlESI2IGgTngysXG1Kdoa54oCKCBE3EZ1BxVQUJg0TOuhIBiRFiJhCdIe0yEALHVikA5KoUyRCxCZEZ5CRLqja+FabYWquiBDxBKJbzO02T+hGSJv/saAsQsRNRLquJHzkRyM1bNJzRYiYQnSHB8lhiRz0q4MYLiaIEDGESAd1gkyL6gxnpXWIEPEEonvgSU140iQhSWMrsEWIeACRGoddaBoWI4MxIkS8A4IEW1rYnWL06TNFiBhEkASQNNDJl3H3MyJETCNooYAGYjrwdwrOZeNGhIgBxF++RIgQIULE2PUJySyg7i0EbosAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">进入服务器终端</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C"><span class="post-toc-number">2.</span> <span class="post-toc-text">常用终端操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">重要提示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">当前目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">查看文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">进入目录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#screen%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">screen使用指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BA-%E5%90%AF%E5%8A%A8%E4%BC%9A%E8%AF%9D"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">新建&#x2F;启动会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E7%BB%91-detach-%E4%BC%9A%E8%AF%9D"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">解绑(detach)会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%81%A2%E5%A4%8D%E4%BC%9A%E8%AF%9D"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">恢复会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9D%9F-terminate-%E4%BC%9A%E8%AF%9D"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">结束(terminate)会话</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8Cpy%E4%BB%A3%E7%A0%81"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">运行py代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">其他命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%91%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">云存储相关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">查询类命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">环境相关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9D%80%E8%BF%9B%E7%A8%8B"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">杀进程</span></a></li></ol></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>进入服务器终端的方式有很多种，不同方式之间并无区别，选择最合适的即可。</p>
+<h1 id="进入服务器终端"><a href="#进入服务器终端" class="headerlink" title="进入服务器终端"></a>进入服务器终端</h1><ul>
+<li><a href="http://blog.mistgpu.com/2022/11/01/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF">Jupyter中启动终端</a></li>
+<li><a href="http://blog.mistgpu.com/2022/11/01/%E6%96%B0SSH%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/#%E6%9C%AC%E6%9C%BA%E7%BB%88%E7%AB%AF">本地SSH连接进入终端</a></li>
+<li>网页命令行</li>
+</ul>
+<h1 id="常用终端操作"><a href="#常用终端操作" class="headerlink" title="常用终端操作"></a>常用终端操作</h1><h2 id="重要提示"><a href="#重要提示" class="headerlink" title="重要提示"></a>重要提示</h2><p>SSH连接遇到网络波动时会中断，前台运行的进程<strong>会被终止</strong>。</p>
+<p>如果程序没有挂到后台或代码没有保存断点的话，您的程序很有可能因此白跑。</p>
+<p>因此如果需要长时间运行程序，请务必使用nohup或screen挂到后台运行，并建议在代码中设置保存断点。</p>
+<p>方法一：运行命令改为 <code>nohup 原命令 &amp;</code>，输出在<code>nohup.out</code>文件中<br>方法二：(推荐!) 在运行程序前 先在终端中输入 <code>screen -SL 会话名 -Logfile 日志名</code> 新建会话</p>
+<blockquote>
+<p>会话名与日志名自定。<br>需要在运行程序前启动screen，开始运行后无法操作</p>
+</blockquote>
+<p>之后输入需要执行的命令(如<code>python 文件名.py</code>)。<br>输入 <code>screen -dr 会话名</code> 恢复会话；程序输出可恢复会话或查看日志文件</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h3><p>在使用服务器终端的过程中，需要留意终端的当前目录。</p>
+<p>在zsh中会以黄色字体显示当前目录，如下图红箭头所指的位置。如果没有显示，可以输入<code>pwd</code>查询当前路径</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal1.png" class="">
+
+<p>默认的终端目录应该为主目录<code>/home/mist/</code>，也就是<code>~/</code>。<code>~</code>与<code>/home/mist</code>等价。</p>
+<h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><p>在终端中输入<code>ls</code>(小写LS)可查询当前目录下的文件。</p>
+<ul>
+<li><code>ls -l</code>可查看到更详细的输出</li>
+<li><code>ls -a</code>可查看隐藏文件</li>
+</ul>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal2.png" class="">
+
+<p>在上图中目录以浅蓝色字体显示，在<code>ls -l</code>中可以看到最左边有字母<code>d</code>。</p>
+<h3 id="进入目录"><a href="#进入目录" class="headerlink" title="进入目录"></a>进入目录</h3><p>在终端中输入<code>cd 文件夹名</code>可进入到某个文件夹内，相当于鼠标双击了某个文件夹。</p>
+<ul>
+<li><code>cd ../</code>可返回上一级目录</li>
+<li><code>cd ~/</code>或<code>cd</code>或<code>cd /home/mist</code> 可返回主目录</li>
+</ul>
+<h2 id="screen使用指南"><a href="#screen使用指南" class="headerlink" title="screen使用指南"></a>screen使用指南</h2><h3 id="新建-启动会话"><a href="#新建-启动会话" class="headerlink" title="新建/启动会话"></a>新建/启动会话</h3><p>输入 <code>screen -SL 会话名 -Logfile 日志名</code> 新建会话，会话名与日志名均可自定义</p>
+<p>新建会话后并没有明显的提示(窗口会刷新一下)，其他与正常终端并无区别</p>
+<p>在启动screen后输入<code>screen -list</code>时可以看到会话名与<code>Attached</code>的字样，说明此时激活了这个会话</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal6.png" class="">
+
+<h3 id="解绑-detach-会话"><a href="#解绑-detach-会话" class="headerlink" title="解绑(detach)会话"></a>解绑(detach)会话</h3><p>在screen会话中，先按下<code>Ctrl-a</code>后按<code>d</code>可解绑会话，相当于最小化窗口。 解绑后会提示<code>detached from xxx.会话名</code></p>
+<p>一般确认代码开始运行后就可以解绑会话了，解绑会话后可关掉命令行窗口。只要程序不报错，服务器不关机，代码就一直在后台运行。</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal7.png" class="">
+
+<p>解绑会话后输入<code>screen -list</code>可以看到会话名与<code>detached</code>的字样，说明此时会话在后台</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal8.png" class="">
+
+<h3 id="恢复会话"><a href="#恢复会话" class="headerlink" title="恢复会话"></a>恢复会话</h3><p>输入<code>screen -dr 会话名</code>可恢复之前解绑的会话，一般重新进入终端后使用此命令。</p>
+<h3 id="结束-terminate-会话"><a href="#结束-terminate-会话" class="headerlink" title="结束(terminate)会话"></a>结束(terminate)会话</h3><p>在screen会话中，输入<code>exit</code>即可退出会话，相当于关闭窗口。</p>
+<p>结束会话后会提示<code>screen is terminating</code></p>
+<h2 id="运行py代码"><a href="#运行py代码" class="headerlink" title="运行py代码"></a>运行py代码</h2><p>在运行代码前，需要通过以上三步进入到项目目录下，直到在<code>ls</code>中能看到需要运行的文件名。</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal3.png" class="">
+
+<p>本例需要运行的<code>train.py</code>文件，可以在<code>ls</code>中看到。</p>
+<blockquote>
+<p>如果代码需要长时间运行，请使用<code>screen</code>挂到后台。<br>如果有创建虚拟环境，则在运行程序前请使用对应的方法激活。<br>建议在运行程序前使用<code>nvidia-smi</code>命令查询显卡是否空。</p>
+</blockquote>
+<p>执行<code>python 文件名.py</code>即可开始运行，如果代码需要参数也可一并加上。</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal4.png" class="">
+
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="云存储相关"><a href="#云存储相关" class="headerlink" title="云存储相关"></a>云存储相关</h3><p>在<code>控制台</code>-<code>上传数据集</code>中上传的文件在云存储中，挂载在服务器<code>/data</code>目录下，任意一台服务器都能访问到。</p>
+<blockquote>
+<p>在服务器主目录下有个名为<code>cloud</code>的文件夹(<code>/home/mist/cloud</code>)，这个文件夹是云存储内的一个子文件夹</p>
+</blockquote>
+<ul>
+<li>使用<code>ls -l /data</code>可查看云存储下的文件</li>
+<li>使用<code>cp -v /data/文件名 /home/mist/</code>可将云存储内的文件复制到主目录下</li>
+<li>使用<code>unzip /data/文件名.zip -d /home/mist/</code>可将云存储下的压缩包(仅<code>zip</code>文件)直接解压到主目录下</li>
+</ul>
+<ul>
+<li>使用<code>cp -v 文件名 /data/</code>可将服务器的文件复制到云存储中</li>
+<li>使用<code>zip -r9 /data/压缩后的文件名.zip 要压缩的目录名</code>可将服务器的文件夹压缩并直接保存到云存储中</li>
+</ul>
+<h3 id="查询类命令"><a href="#查询类命令" class="headerlink" title="查询类命令"></a>查询类命令</h3><ul>
+<li><code>lscpu</code> 查询cpu型号</li>
+<li><code>free -h</code> 查询内存占用</li>
+<li><code>df -h /home/mist/</code> 查询硬盘可用空间</li>
+<li><code>du -hs 文件名</code> 查询文件或文件夹总占用空间</li>
+<li><code>nvcc -V</code> 查询默认环境的cuda版本</li>
+<li><code>which python</code> 查询默认环境python的路径</li>
+<li><code>top</code>或<code>htop</code>或<code>nmon</code> 查询某个进程的资源占用情况</li>
+<li><code>nvidia-smi</code> 查询显卡相关占用情况</li>
+</ul>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal5.png" class="">
+
+<p><code>nvidia-smi</code>输出如上图所示，主要关注</p>
+<ol>
+<li>红框1所示的显存占用。由于部分机器有安装桌面操作系统，因此有几m-几十m左右的占用。</li>
+<li>红框2所示的整体占用。</li>
+</ol>
+<h3 id="环境相关"><a href="#环境相关" class="headerlink" title="环境相关"></a>环境相关</h3><ul>
+<li><code>pip list</code> 查询pip中安装的包</li>
+<li><code>pip install 包名</code> 使用pip安装其他包</li>
+<li><code>pip uninstall 包名</code> 使用pip卸载某个包</li>
+<li><code>sudo apt update; sudo apt install 包名</code> 使用apt安装包</li>
+</ul>
+<h3 id="杀进程"><a href="#杀进程" class="headerlink" title="杀进程"></a>杀进程</h3><p>当没有程序正在跑，且用<code>nvidia-smi</code>查询到显存占用高时，有可能是之前的程序进程没有正常退出。此时需要清掉之前的残留进程以释放显存。</p>
+<blockquote>
+<p>最无脑的释放方法是在控制台关掉服务器，再重新开机</p>
+</blockquote>
+<p>可以使用<code>ps x</code>命令查询当前正在运行的<strong>进程名</strong>以及对应<strong>PID</strong>，如下图所示</p>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal9.png" class="">
+
+<p>可以看到当前有若干个<code>python</code>开头的命令正在运行，如粉色1框所示。</p>
+<p>在每个进程的开头，有对应地进程PID，如绿色2框所示，此时在终端执行<code>sudo kill &lt;PID&gt;</code>即可杀掉对应的进程。</p>
+<p>如果需要杀的进程很多，可以使用<code>sudo pkill -x &lt;进程名&gt;</code>命令。进程名如橙色3框所示，</p>
+<blockquote>
+<p>-x 代表完全匹配进程名，不加的话只要进程名里有python的命令都会被杀，比如Jupyter本身</p>
+</blockquote>
+<img src="/2022/11/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/terminal10.png" class="">
+
+<p>本例执行<code>sudo pkill -x python</code>，可以看到执行完后显存已空</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2022-11-27");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-11-27T04:00:00.000Z" itemprop="datePublished">2022-11-27</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2022/11/26/Jupyter%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Jupyter使用教程</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://blog.mistgpu.com">MistGPU博客</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+<div class="footer" style="background: #409EFF;position: fixed;left: 0;right: 0;bottom: 0;height: 50px"><p style="color:white;text-align:center;line-height:50px;font-weight:bold">在线GPU计算环境 RTX3090 V100 按时间计费 &nbsp;<a target="_blank" rel="noopener" href="https://mistgpu.com" style="text-decoration:none;color: #303133">注册免费体验</a></p></div>
+    </body>
+
+</html>
